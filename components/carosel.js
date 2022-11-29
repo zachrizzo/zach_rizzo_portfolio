@@ -53,7 +53,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
   }, []);
 
   return (
-    <div className=" rounded-3xl carousel my-12 flex-grow-0 flex justify-center item-center w-screen mx-10">
+    <div className=" rounded-3xl carousel my-5 flex-grow-0 flex justify-center item-center w-screen mx-10">
       <div className="relative w-[60%] overflow-hidden">
         <div className="flex justify-between absolute top left w-full h-full">
           <button
@@ -136,7 +136,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                         target="_blank"
                         className="h-full w-full aspect-square text-xs block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
                       >
-                        <h3 className="text-white py-6 px-3 mx-auto text-xl">
+                        <h3 className="text-white my-6 mx-3 mx-auto text-xs">
                           {images.url}
                         </h3>
                       </a>
@@ -151,23 +151,23 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                       {/* q:how to open url in new tab 
 
                     */}
-                      <a
+                      {/* <a
                         href={images.url}
                         target="_blank"
                         className=" text-xs h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                         style={{
                           backgroundImage: `url(${images.url || ""})`,
                         }}
+                      > */}
+                      <video
+                        // src={images || ""}
+                        // alt={images}
+                        className="w-full aspect-square "
+                        controls
                       >
-                        <video
-                          // src={images || ""}
-                          // alt={images}
-                          className="w-full aspect-square "
-                          controls
-                        >
-                          <source src={images.url || ""} type="video/mp4" />
-                        </video>
-                      </a>
+                        <source src={images.url || ""} type="video/mp4" />
+                      </video>
+                      {/* </a> */}
                       {/* <a
                         href={images.url}
                         className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"

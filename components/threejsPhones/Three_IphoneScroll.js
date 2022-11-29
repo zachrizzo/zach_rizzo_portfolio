@@ -45,7 +45,7 @@ function Composition({ ...props }) {
   useEffect(() => {
     const responsive = () => {
       if (width <= 11) {
-        console.log(width);
+        // console.log(width);
         setTagLocation1("mt-[800px], ml-[200px]");
         setTagLocation2("mt-[400px], ml-[200px]");
       } else {

@@ -133,7 +133,7 @@ function ParticleText() {
       // particleArray.push(new Particle(80, 50));
     }
 
-    console.log(particleArray);
+    // console.log(particleArray);
     function animate() {
       context.fillStyle = "#D5C9C9";
       context.clearRect(0, 0, context.canvas.width, context.canvas.height);

@@ -123,6 +123,7 @@ export default function BasicPortfolioPage() {
               "/portfolioImages/amaApp/RPReplay_Final1669607984.MP4",
             ]}
             videosHorizontal={[]}
+            projectLink={"https://github.com/zachrizzo/AMA_APP"}
             images={amaAppUrl}
             title={"AMA App"}
             description={
@@ -143,6 +144,7 @@ export default function BasicPortfolioPage() {
             }
             listOfVideoIndexes={[7]}
             buttonText={"View Project"}
+            projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
           />
         </div>
         <div
@@ -168,6 +170,18 @@ export default function BasicPortfolioPage() {
             teams, and more. This app using React Native and Firebase.
           </p>
         </div>
+        <div className=" mt-[20px]  mb-[10px]">
+          <MainButton
+            buttonText={"View Project"}
+            onClick={() => {
+              //send the user to link in a new tab
+              window.open(
+                "https://github.com/zachrizzo/team_Flow_productiviity_app_v3",
+                "_blank"
+              );
+            }}
+          />
+        </div>
       </section>
 
       <div
@@ -188,6 +202,7 @@ export default function BasicPortfolioPage() {
               "This is a robot is research project that I built to learn SLAM (Simultaneous Localization and Mapping) and ROS 2 Foxy. In the future I will be adding an arm on top so it can interact with objects. These interactions will be assisted by an Intel real sense camera which is equipped with stereo depth cameras that allow for accurate measurement of distance. After obtaining the measurement it will perform inverse  kinematics to accurately interact with objects. I designed the robot housing and was able to bring it to life using a 3D printer. This robot runs on a Nvidia Jetson Xavier NX and a 12 V power supply."
             }
             listOfVideoIndexes={[0]}
+            projectLink={"https://github.com/zachrizzo/UsefulRobot"}
             buttonText={"View Project"}
           />
         </section>
@@ -257,6 +272,7 @@ export default function BasicPortfolioPage() {
             "At American Medical Associates we were experiencing a high number of faxes to the point where we didn't have enough staff to read them. As a solution I created a program that uses OCR (Optical Character Recognition) to read each fax individually and perform the tasks needed in order to send it to the providers. By using their EMR, I developed a Python bot that would navigate the EMR, download the fax, read it, and send the fax where it needed to go."
           }
           listOfVideoIndexes={[]}
+          projectLink={"https://github.com/zachrizzo/Read_ama_fax"}
           buttonText={"View Project"}
         />
       </section>
@@ -270,6 +286,7 @@ export default function BasicPortfolioPage() {
             "With 15,000 patients at American Medical Associates, creating an email campaign was near impossible with no way to access all of their emails. as a solution I developed a python bot that went through the EMR and pulled each email from the 15,000 patients and put it into a spreads using Numpy so that we may run marketing campaigns."
           }
           listOfVideoIndexes={[]}
+          projectLink={"https://github.com/zachrizzo/Geat_allPatient_emails"}
           buttonText={"View Project"}
         />
       </section>

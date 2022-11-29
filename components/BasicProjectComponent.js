@@ -185,12 +185,12 @@ export default function BasicProjectComponent({
         className=" "
       > */}
         <div className=" w-[90%]">
-          <p className=" mx-10 text-md md:text-lg text-[#e9e9e9]  mt-[50px] text-center ">
+          <p className=" mx-10 text-md md:text-lg text-[#e9e9e9]  md:mt-[50px] text-center ">
             {description}
           </p>
         </div>
         {/* </motion.div> */}
-        <div className="  mb-[10px]">
+        <div className=" mt-[20px]  mb-[10px]">
           {projectLink != null && (
             <MainButton
               buttonText={buttonText}

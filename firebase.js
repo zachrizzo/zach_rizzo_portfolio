@@ -52,7 +52,7 @@ export async function getImageAndVideos({ setUrls, project }) {
           url: url,
           metadata: metadata,
         });
-        console.log(metadata);
+        // console.log(metadata);
       });
     });
     setUrls(urls);

@@ -8,6 +8,7 @@ export default function Text({
   subTextSize,
   subRotation,
   mainRotation,
+  mainTextSize,
 }) {
   return (
     <>
@@ -39,7 +40,7 @@ export default function Text({
       >
         <Text3D
           font={"/fonts/Roboto_Regular.json"}
-          size={1}
+          size={mainTextSize ? mainTextSize : 1}
           height={0.065}
           curveSegments={12}
         >

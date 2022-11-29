@@ -48,7 +48,40 @@ export default function FloatingIslandSeen() {
   const [godRaysWeight, setGodRaysWeight] = useState(0.6);
   const [startingCameraX, setStartingCameraX] = useState(0);
   const [startingCameraY, setStartingCameraY] = useState(0);
+  const [subTextOnePosition, setSubTextOnePosition] = useState([
+    3.75, 6.5, 0.75,
+  ]);
+  const [subTextTwoPosition, setSubTextTwoPosition] = useState([
+    -5.75, 6.8, 3.75,
+  ]);
+  const [mainTextOnePosition, setMainTextOnePosition] = useState([3.5, 7, 0]);
+  const [mainTextSize, setMainTextSize] = useState(1);
+  const [subTextOneRotation, setSubTextOneRotation] = useState([
+    0, -0.2, -0.05,
+  ]);
+  const [subTextTwoRotation, setSubTextTwoRotation] = useState([0, 0.3, -0.05]);
+  const [mainTextOneRotation, setMainTextOneRotation] = useState([
+    0, -0.35, -0.05,
+  ]);
+
   const router = useRouter();
+
+  useEffect(() => {
+    //get screen size
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    //if its a mobile device
+    if (width < 600) {
+      //set the text position
+      setSubTextOnePosition([-2.5, 6.5, 7.75]);
+      setSubTextTwoPosition([-2, 12, 3.75]);
+      setMainTextOnePosition([-1.5, 6.5, 3]);
+      setMainTextSize(0.5);
+      setSubTextOneRotation([0, -0.2, -0.05]);
+      setSubTextTwoRotation([0, 0.3, -0.05]);
+      setMainTextOneRotation([0, -0.3, 0]);
+    }
+  }, []);
 
   let lightColor = new Color(1, 0.2, 0.1);
   let mesh = new Mesh(
@@ -83,7 +116,7 @@ export default function FloatingIslandSeen() {
     var percentageY =
       (cameraRef.current.position.y - startingCameraY) / middleOfScrollY;
     // console.log(percentageX * 100);
-    console.log(cameraRef.current.position);
+    // console.log(cameraRef.current.position);
 
     if (
       cameraRef.current.position.x > minScrollX &&
@@ -163,14 +196,17 @@ export default function FloatingIslandSeen() {
           <Grass />
           <SceneParticles />
           <Text
-            subTextPosition={[3.75, 6.5, 0.75]}
-            mainTextPosition={[3.5, 7, 0]}
+            subTextPosition={subTextOnePosition}
+            mainTextPosition={mainTextOnePosition}
+            subRotation={subTextOneRotation}
             mainText={"Zach Rizzo"}
             subtext={"Software Engineer"}
+            mainTextSize={mainTextSize}
+            mainRotation={mainTextOneRotation}
           />
           <Text
-            subTextPosition={[-5.75, 6.8, 3.75]}
-            subRotation={[0, 0.3, -0.05]}
+            subTextPosition={subTextTwoPosition}
+            subRotation={subTextTwoRotation}
             // mainTextPosition={[3.5, 7, 0]}
             // mainText={"Zach Rizzo"}
             subtext={"Zoom in To Portal to See More"}

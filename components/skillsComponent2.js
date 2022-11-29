@@ -18,8 +18,8 @@ export default function SkillsComponent2({
 
     randomTypeSpeed = Math.floor(Math.random() * 40) + 20;
 
-    console.log(randomDelaySpeed);
-    console.log(randomTypeSpeed);
+    // console.log(randomDelaySpeed);
+    // console.log(randomTypeSpeed);
   }, []);
 
   const [text, count] = useTypewriter({
