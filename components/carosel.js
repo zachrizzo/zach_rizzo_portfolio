@@ -106,7 +106,10 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
           {!images
             ? null
             : images.map((images, index) => {
-                if (images.metadata.contentType != "video/mp4") {
+                if (
+                  images.metadata.contentType != "video/mp4" &&
+                  images.metadata.contentType != "video/quicktime"
+                ) {
                   return (
                     <div
                       key={index}
@@ -116,6 +119,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                         //open image in new tab
 
                         href={images.url}
+                        target="_blank"
                         className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                         style={{
                           backgroundImage: `url(${images.url || ""})`,
@@ -128,7 +132,8 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                         />
                       </a>
                       <a
-                        href={images}
+                        href={images.url}
+                        target="_blank"
                         className="h-full w-full aspect-square text-xs block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
                       >
                         <h3 className="text-white py-6 px-3 mx-auto text-xl">
@@ -143,8 +148,12 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                       key={index}
                       className="carousel-item text-center relative w-64 h-64 snap-start"
                     >
+                      {/* q:how to open url in new tab 
+
+                    */}
                       <a
                         href={images.url}
+                        target="_blank"
                         className=" text-xs h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                         style={{
                           backgroundImage: `url(${images.url || ""})`,
@@ -159,14 +168,14 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                           <source src={images.url || ""} type="video/mp4" />
                         </video>
                       </a>
-                      <a
+                      {/* <a
                         href={images.url}
                         className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
                       >
                         <h3 className="text-white py-6 px-3 mx-auto text-xl">
                           {images.url}
                         </h3>
-                      </a>
+                      </a> */}
                     </div>
                   );
                 }
