@@ -48,9 +48,9 @@ export default function () {
           it's creating a program to read and distribute faxes automatically
           using OCR(Optical character recognition) or a program that goes
           through an EMR and grabs the information of 15,000 patients to put in
-          a spreadsheet, I love challenges and solving problems. Having
+          a spreadsheet. I love challenges and solving problems. Having
           developed two apps on the app store and multiple web-based
-          applications, my passion for Ui/UX is unmatched, I have experience
+          applications, my passion for Ui/UX is unmatched. I have experience
           creating and maintaining software used by the public in many different
           stages. I am currently learning about robotics and Machine learning in
           hopes of adding that to my quiver of arrows soon. In my free time, I
