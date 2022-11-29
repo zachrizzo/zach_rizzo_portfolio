@@ -166,7 +166,7 @@ export default function BasicProjectComponent({
   // }
 
   return (
-    <div className="  flex items-center justify-center w-full flex-col ">
+    <div className=" mt-2  flex items-center justify-center w-full flex-col ">
       <div className=" justify-center items-center grid-rows-4 flex-col flex">
         <div className=" ">
           <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
@@ -175,9 +175,7 @@ export default function BasicProjectComponent({
         </div>
 
         <div className=" flex justify-center items-center w-[80%]   ">
-          {/* {images.length > 0 && (
-            <Carousel listOfVideoIndexes={listOfVideoIndexes} images={images} />
-          )} */}
+          <Carousel listOfVideoIndexes={listOfVideoIndexes} images={images} />
         </div>
 
         {/* <motion.div
@@ -187,7 +185,7 @@ export default function BasicProjectComponent({
         className=" "
       > */}
         <div className=" w-[90%]">
-          <p className=" mx-10 text-sm md:text-lg text-[#e9e9e9]  mt-[50px] text-center ">
+          <p className=" mx-10 text-md md:text-lg text-[#e9e9e9]  mt-[50px] text-center ">
             {description}
           </p>
         </div>

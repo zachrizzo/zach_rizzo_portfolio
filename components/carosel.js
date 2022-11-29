@@ -83,7 +83,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
             // disabled={isDisabled("next")}
           >
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              // xmlns="http://www.w3.org/2000/svg"
               className="h-12 w-20 -ml-5"
               fill="none"
               viewBox="0 0 24 24"
@@ -106,31 +106,33 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
           {!images
             ? null
             : images.map((images, index) => {
-                if (!listOfVideoIndexes.includes(index)) {
+                if (images.metadata.contentType != "video/mp4") {
                   return (
                     <div
                       key={index}
                       className="carousel-item text-center relative w-64 h-64 snap-start"
                     >
                       <a
-                        href={images}
+                        //open image in new tab
+
+                        href={images.url}
                         className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                         style={{
-                          backgroundImage: `url(${images || ""})`,
+                          backgroundImage: `url(${images.url || ""})`,
                         }}
                       >
                         <img
-                          src={images || ""}
-                          alt={images}
+                          src={images.url || ""}
+                          alt={images.url}
                           className="w-full object-cover"
                         />
                       </a>
                       <a
                         href={images}
-                        className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
+                        className="h-full w-full aspect-square text-xs block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
                       >
                         <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                          {images}
+                          {images.url}
                         </h3>
                       </a>
                     </div>
@@ -142,10 +144,10 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                       className="carousel-item text-center relative w-64 h-64 snap-start"
                     >
                       <a
-                        href={images}
-                        className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
+                        href={images.url}
+                        className=" text-xs h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                         style={{
-                          backgroundImage: `url(${images || ""})`,
+                          backgroundImage: `url(${images.url || ""})`,
                         }}
                       >
                         <video
@@ -154,15 +156,15 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                           className="w-full aspect-square "
                           controls
                         >
-                          <source src={images || ""} type="video/mp4" />
+                          <source src={images.url || ""} type="video/mp4" />
                         </video>
                       </a>
                       <a
-                        href={images}
+                        href={images.url}
                         className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
                       >
                         <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                          {images}
+                          {images.url}
                         </h3>
                       </a>
                     </div>

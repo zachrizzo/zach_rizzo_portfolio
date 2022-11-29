@@ -13,6 +13,7 @@
     "babel-plugin-glsl": "^1.0.0",
     "babel-plugin-macros": "^3.1.0",
     "classnames": "^2.3.2",
+    "firebase": "^9.14.0",
     "framer-motion": "^7.6.15",
     "glsl-curl-noise2": "^0.0.4",
     "glsl-noise": "^0.0.0",

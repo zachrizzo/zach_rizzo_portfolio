@@ -25,7 +25,7 @@ export default function SkillsComponent({
   const [text, count] = useTypewriter({
     words: [
       "Redux",
-      "Ux/UI Design",
+      "Ux/UI",
       "Framer Motion",
       "Javascript",
       "Typescript",
@@ -33,10 +33,11 @@ export default function SkillsComponent({
       "Expo",
       "Git",
       "Github",
-      "Unreal Engine 5 - in progress",
+
       "pandas",
       "numpy",
       "EMR",
+      "UE5",
     ],
     loop: true,
     typeSpeed: 50,

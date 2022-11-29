@@ -6,12 +6,44 @@ import IphoneScroll from "../components/threejsPhones/Three_IphoneScroll";
 import { motion } from "framer-motion";
 import IntroNameComponent from "../components/IntroNameComonent";
 import AboutMe from "../components/AboutMe";
+import { getImageAndVideos } from "../firebase";
 
 export default function BasicPortfolioPage() {
   const [activeStatus, setActiveStatus] = useState(null);
   const [companyDbB, setCompanyDbB] = useState(null);
   const [iphoneScrollInView, setIphoneScrollInView] = useState(false);
   const [iphoneScrollPages, setIphoneScrollPages] = useState(0);
+  const [amaAppUrl, setAmaAppUrl] = useState(null);
+  const [amaWebsiteUrl, setAmaWebsiteUrl] = useState(null);
+  const [flowTeamUrl, setFlowTeamUrl] = useState(null);
+  const [useFulRobotUrl, setUseFulRobotUrl] = useState(null);
+  const [crabRobotUrl, setCrabRobotUrl] = useState(null);
+
+  useEffect(() => {
+    // get the images and videos from firebase
+    getImageAndVideos({
+      setUrls: setAmaAppUrl,
+      project: "amaApp",
+    });
+    getImageAndVideos({
+      setUrls: setAmaWebsiteUrl,
+      project: "amaWebsite",
+    });
+    getImageAndVideos({
+      setUrls: setFlowTeamUrl,
+      project: "flowTeam",
+    });
+    getImageAndVideos({
+      setUrls: setUseFulRobotUrl,
+      project: "useFulRobot",
+    });
+    getImageAndVideos({
+      setUrls: setCrabRobotUrl,
+      project: "crabRobot",
+    });
+    console.log("useful robot", amaAppUrl);
+  }, []);
+
   const reactRef = useRef(null);
   const RoboticsRef = useRef(null);
   const automationRef = useRef(null);
@@ -91,23 +123,12 @@ export default function BasicPortfolioPage() {
               "/portfolioImages/amaApp/RPReplay_Final1669607984.MP4",
             ]}
             videosHorizontal={[]}
-            images={[
-              "/portfolioImages/amaApp/IMG_2DCCE374DF2A-1.jpeg",
-              "/portfolioImages/amaApp/Simulator Screen Shot - iPhone 8 Plus - 2022-05-18 at 19.10.11.png",
-              "/portfolioImages/amaApp/RPReplay_Final1669607984.MP4",
-              "/portfolioImages/amaApp/IMG_2DCCE374DF2A-1.jpeg",
-              "/portfolioImages/amaApp/IMG_2DCCE374DF2A-1.jpeg",
-              "/portfolioImages/amaApp/IMG_2DCCE374DF2A-1.jpeg",
-              "/portfolioImages/amaApp/IMG_2DCCE374DF2A-1.jpeg",
-              "/portfolioImages/amaApp/IMG_2DCCE374DF2A-1.jpeg",
-
-              // "/galaxy.jpeg",
-            ]}
+            images={amaAppUrl}
             title={"AMA App"}
             description={
               " I created this app while working at AMA (American Medical Associates) as a software engineer. This apps purpose was to help streamline all processes of the AMA staff on the backend whether it was inventory management using a barcode scanner or allowing the managers to keep track of the money going in and out of the clinic. Users were also able to send messages set to do lists and keep track of their schedule. I created this app using React Native and Firebase."
             }
-            listOfVideoIndexes={[2]}
+            listOfVideoIndexes={[9]}
             buttonText={"View Project"}
           />
         </div>
@@ -115,12 +136,11 @@ export default function BasicPortfolioPage() {
           <BasicProjectComponent
             videosVertical={[]}
             videosHorizontal={[]}
-            images={[
-              "/portfolioImages/amaWebsite/Screen Shot 2022-11-27 at 9.17.25 PM.png",
-              "/portfolioImages/amaWebsite/Screen Shot 2022-11-27 at 9.18.22 PM.png",
-              "/portfolioImages/amaWebsite/Screen Shot 2022-11-27 at 9.19.15 PM.png",
-              // "/galaxy.jpeg",
-            ]}
+            images={
+              [
+                // "/galaxy.jpeg",
+              ]
+            }
             title={"AMA Website"}
             description={
               "This react website was created in conjunction with the AMA app. The react website its purpose was to handle all of the back and processes that the app could not. Some of the features the website offered were sending text messages to patients after visit, allowing employees to apply for specific positions, allowed patients to fill out new patient packets, allowed the tracking and management of different departments within the organization, allowed for IT support tickets to be submitted and worked on, and allowed for the management of the inventory. I created this website using React, Next.JS, TailWind, and Firebase."
@@ -156,20 +176,19 @@ export default function BasicPortfolioPage() {
         ref={RoboticsRef}
         className=" flex-col my-[100px] w-full flex justify-center items-center"
       >
-        <section className="  flex justify-center items-center flex-col snap-center h-screen">
+        <section className=" text-center  flex justify-center items-center flex-col snap-center h-screen">
           <h4 className="mb-5 text-[#a631f0] text-5xl font-bold">
             Robotics & Research
           </h4>
           <BasicProjectComponent
-            images={[
-              "/portfolioImages/useFullRobot/IMG_0094.JPG",
-              "/portfolioImages/useFullRobot/IMG_0093.JPG",
-
-              // "/galaxy.jpeg",
-            ]}
+            images={
+              [
+                // "/galaxy.jpeg",
+              ]
+            }
             title={"Useful Robot"}
             videosVertical={[]}
-            videosHorizontal={["/portfolioImages/useFullRobot/IMG_0096.MOV"]}
+            videosHorizontal={[]}
             description={
               "This is a robot is research project that I built to learn SLAM (Simultaneous Localization and Mapping) and ROS 2 Foxy. In the future I will be adding an arm on top so it can interact with objects. These interactions will be assisted by an Intel real sense camera which is equipped with stereo depth cameras that allow for accurate measurement of distance. After obtaining the measurement it will perform inverse  kinematics to accurately interact with objects. The hosing of the robot was all designed and 3D printed by me. This robot runs on a Nvidia Jetson Xavier NX and a 12 V power supply."
             }
@@ -180,8 +199,8 @@ export default function BasicPortfolioPage() {
         <section className=" flex justify-center items-center flex-col snap-center h-screen">
           <BasicProjectComponent
             images={[]}
-            videosHorizontal={["/portfolioImages/Crab Robot/IMG_0020.MOV"]}
-            videosVertical={["/portfolioImages/Crab Robot/IMG_0017 2.MOV"]}
+            videosHorizontal={[]}
+            videosVertical={[]}
             title={"Crab Robot"}
             description={
               "The Crab was inspired by mini walking robots such as spot by Boston dynamics. The Crab was built using an  raspberry pi pico running MicroPython. Each arm in the robot has multiple degrees of freedom. This robot is still in the research phases as I am still trying to find out the proper inverse kinematics to counteract the offset weight balance. This robot has a solar powered battery packed and it's designed to run many hours it will be equipped with a camera and run tensor flow light for object Detection."
@@ -229,7 +248,7 @@ export default function BasicPortfolioPage() {
       <section
         id="automation"
         ref={automationRef}
-        className=" flex justify-center items-center flex-col snap-center h-screen"
+        className=" text-center flex justify-center items-center flex-col snap-center h-screen"
       >
         <h4 className="mb-20 text-[#a631f0] text-5xl font-bold">Automation</h4>
         <BasicProjectComponent
