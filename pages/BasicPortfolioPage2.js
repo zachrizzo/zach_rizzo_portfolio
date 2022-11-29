@@ -133,10 +133,10 @@ export default function BasicPortfolioPage() {
           <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
             FlowTeam
           </h3>
-          <IphoneScroll
+          {/* <IphoneScroll
             pages={iphoneScrollPages}
             enabled={iphoneScrollInView}
-          />
+          /> */}
         </div>
         <div ref={listInnerRef} className=" h-[50px] w-full"></div>
         <div className=" w-[90%] snap-center">

@@ -175,9 +175,9 @@ export default function BasicProjectComponent({
         </div>
 
         <div className=" flex justify-center items-center w-[80%]   ">
-          {images.length > 0 && (
+          {/* {images.length > 0 && (
             <Carousel listOfVideoIndexes={listOfVideoIndexes} images={images} />
-          )}
+          )} */}
         </div>
 
         {/* <motion.div
