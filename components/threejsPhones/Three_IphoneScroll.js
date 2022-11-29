@@ -180,7 +180,7 @@ function Composition({ ...props }) {
           scale={[4.5, 5.9, 2]}
           position={[-1.5, 2.1, 0]}
           ref={todo}
-          url="/portfolioImages/FlowTeam/Screens/screen_baseColor.jpeg"
+          url="/FlowTeam/Screens/screen_baseColor.jpeg"
         />
         <Tag
           ref={right}
@@ -192,7 +192,7 @@ function Composition({ ...props }) {
         <Iphone13ProMax
           rotationArray={[Math.PI / 2, 5.5, 0]}
           ref={mbp14}
-          GLTF={"/portfolioImages/FlowTeam/gltf/Iphone13ProMaxTodoScreen.gltf"}
+          GLTF={"/FlowTeam/gltf/Iphone13ProMaxTodoScreen.gltf"}
           PositionArray={[-0.3, 2, 1.5]}
         >
           {/* <Iphone13proMax2 ref={mbp14} Gltf={'/iphone_ToDo.gltf'}> */}
@@ -202,7 +202,7 @@ function Composition({ ...props }) {
           scale={[2.2, 4.75, 6]}
           position={[Math.PI / -13, 1.5, -2.08]}
           ref={todo}
-          url="/portfolioImages/FlowTeam/Screens/ToDoScreen.png"
+          url="/FlowTeam/Screens/ToDoScreen.png"
         />
         <Tag
           ref={phone3}
@@ -215,7 +215,7 @@ function Composition({ ...props }) {
         <Iphone13ProMax
           rotationArray={[Math.PI / 2, 6.9, 0]}
           ref={phone3}
-          GLTF={"/portfolioImages/FlowTeam/gltf/Iphone13ProMaxTodoScreen.gltf"}
+          GLTF={"/FlowTeam/gltf/Iphone13ProMaxTodoScreen.gltf"}
           PositionArray={[-2.7, 2, 1.5]}
         ></Iphone13ProMax>
         <Image
@@ -223,7 +223,7 @@ function Composition({ ...props }) {
           scale={[2.2, 4.75, 6]}
           position={[-2.75, 1.5, -2.09]}
           ref={todo}
-          url="/portfolioImages/FlowTeam/Screens/messaging.png"
+          url="/FlowTeam/Screens/messaging.png"
         />
         <Tag
           //title="Instant Messaging:"

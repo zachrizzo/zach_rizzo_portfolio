@@ -11,9 +11,7 @@ import { useGLTF } from "@react-three/drei";
 
 export default function IpadPro({ ref, PositionArray, ...props }) {
   const group = useRef();
-  const { nodes, materials } = useGLTF(
-    "/portfolioImages/FlowTeam/gltf/ipad_clockin.gltf"
-  );
+  const { nodes, materials } = useGLTF("/FlowTeam/gltf/ipad_clockin.gltf");
   return (
     <group ref={ref} {...props} dispose={null}>
       <group position={PositionArray} rotation={[-Math.PI / 2, 0, 0]}>

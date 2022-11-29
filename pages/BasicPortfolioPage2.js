@@ -114,7 +114,7 @@ export default function BasicPortfolioPage() {
         className=" flex-col my-[100px]  flex justify-center items-center"
       >
         <div className="h-screen snap-center text-center ">
-          <h4 className="mb-2  text-[#a631f0] text-5xl font-bold">
+          <h4 className="mb-2  text-[#a631f0] text-3xl md:text-5xl font-bold">
             React & React Native
           </h4>
           <BasicProjectComponent
@@ -153,10 +153,10 @@ export default function BasicPortfolioPage() {
           <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
             FlowTeam
           </h3>
-          {/* <IphoneScroll
+          <IphoneScroll
             pages={iphoneScrollPages}
             enabled={iphoneScrollInView}
-          /> */}
+          />
         </div>
         <div ref={listInnerRef} className=" h-[50px] w-full"></div>
         <div className=" w-[90%] snap-center">
@@ -172,12 +172,12 @@ export default function BasicPortfolioPage() {
       </section>
 
       <div
-        id="robots"
+        id={"robots"}
         ref={RoboticsRef}
         className=" flex-col my-[100px] w-full flex justify-center items-center"
       >
         <section className=" text-center  flex justify-center items-center flex-col snap-center h-screen">
-          <h4 className="mb-5 text-[#a631f0] text-5xl font-bold">
+          <h4 className="mb-5 text-[#a631f0] text-3xl md:text-5xl font-bold">
             Robotics & Research
           </h4>
           <BasicProjectComponent
@@ -250,7 +250,9 @@ export default function BasicPortfolioPage() {
         ref={automationRef}
         className=" text-center flex justify-center items-center flex-col snap-center h-screen"
       >
-        <h4 className="mb-20 text-[#a631f0] text-5xl font-bold">Automation</h4>
+        <h4 className="mb-20 text-[#a631f0] text-3xl md:text-5xl font-bold">
+          Automation
+        </h4>
         <BasicProjectComponent
           images={[]}
           title={"Fax Automation"}
@@ -262,19 +264,19 @@ export default function BasicPortfolioPage() {
           listOfVideoIndexes={[]}
           buttonText={"View Project"}
         />
-        <section className=" flex justify-center items-center flex-col snap-center h-screen">
-          <BasicProjectComponent
-            images={[]}
-            videosVertical={[]}
-            videosHorizontal={[]}
-            title={"Email Automation"}
-            description={
-              "When assisting marketing and American Medical Associates I realized that we did not have a list of emails for an email campaign. Although we did have 15,000 patients there is no way to access all of their emails so I created a python bought that went through the EMR and pulled each email from the 15,000 patients and put it into a spreads so that we may run marketing campaigns using it."
-            }
-            listOfVideoIndexes={[]}
-            buttonText={"View Project"}
-          />
-        </section>
+      </section>
+      <section className=" text-center flex justify-center items-center flex-col snap-center h-screen">
+        <BasicProjectComponent
+          images={[]}
+          videosVertical={[]}
+          videosHorizontal={[]}
+          title={"Email Automation"}
+          description={
+            "When assisting marketing and American Medical Associates I realized that we did not have a list of emails for an email campaign. Although we did have 15,000 patients there is no way to access all of their emails so I created a python bought that went through the EMR and pulled each email from the 15,000 patients and put it into a spreads so that we may run marketing campaigns using it."
+          }
+          listOfVideoIndexes={[]}
+          buttonText={"View Project"}
+        />
       </section>
     </div>
   );

@@ -105,6 +105,7 @@ export default function FloatingIslandSeen() {
       };
       IncreaseGodRays().then(() => {
         //console.log("done");
+
         router.push("/BasicPortfolioPage2");
       });
     } else {

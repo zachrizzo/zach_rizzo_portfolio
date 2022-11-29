@@ -41,18 +41,18 @@ export default function IntroNameComponent({
         <MainButton
           buttonText={"React"}
           onClick={() => {
-            router.push("/BasicPortfolioPage#react");
+            router.push("/BasicPortfolioPage2#react");
           }}
         />
         <MainButton
           buttonText={"Robotics"}
           onClick={() => {
-            router.push("/BasicPortfolioPage#robots");
+            router.push("/BasicPortfolioPage2#robots");
           }}
         />
         <MainButton
           onClick={() => {
-            router.push("/BasicPortfolioPage#automation");
+            router.push("/BasicPortfolioPage2#automation");
           }}
           buttonText={"Automation"}
         />

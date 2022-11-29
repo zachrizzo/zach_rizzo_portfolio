@@ -168,8 +168,8 @@ export default function BasicProjectComponent({
   return (
     <div className=" mt-2  flex items-center justify-center w-full flex-col ">
       <div className=" justify-center items-center grid-rows-4 flex-col flex">
-        <div className=" ">
-          <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
+        <div className=" mx-10 ">
+          <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-lg md:text-2xl">
             {title}
           </h3>
         </div>
