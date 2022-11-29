@@ -55,7 +55,7 @@ const Home = () => {
   const [godRaysDecay, setGodRaysDecay] = useState(0.97);
   const [godRaysDensity, setGodRaysDensity] = useState(0.97);
   const [godRaysWeight, setGodRaysWeight] = useState(0.6);
-/
+
   const Particle = numberOfP.map((i) => {
     return (
       <Sphere
