@@ -105,7 +105,7 @@ export default function FloatingIslandSeen() {
       };
       IncreaseGodRays().then(() => {
         //console.log("done");
-        router.push("/BasicPortfolioPage");
+        router.push("/BasicPortfolioPage2");
       });
     } else {
       //set good rays back to normal
