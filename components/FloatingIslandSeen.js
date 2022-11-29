@@ -29,7 +29,7 @@ import IslandRocks from "../components/IslandRocks";
 import FloatingRocks from "../components/FloatingRocks";
 import IslandTrees from "../components/IslandTrees";
 import Text from "../components/Text";
-import Grass from "../components/grass";
+import Grass from "./Grass";
 import SceneParticles from "../components/SceneParticles";
 import {
   BrightnessContrast,
