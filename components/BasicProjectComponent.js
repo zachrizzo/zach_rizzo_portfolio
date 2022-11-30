@@ -166,31 +166,26 @@ export default function BasicProjectComponent({
   // }
 
   return (
-    <div className=" mt-2  flex items-center justify-center w-full flex-col ">
-      <div className=" justify-center items-center grid-rows-4 flex-col flex">
-        <div className=" mx-10 ">
-          <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-lg md:text-2xl">
+    <div className=" text-center h-screen mb-[20px] flex  justify-center w-full flex-col ">
+      <div className=" w-full justify-center items-center grid-rows-4 flex-col flex">
+        {/* title */}
+        <div className="w-full md:mb-[40px] text-center flex flex-col  justify-center items-center h-[5%] ">
+          <h3 className=" text-center  uppercase tracking-[20px] text-gray-500 text-lg md:text-2xl">
             {title}
           </h3>
         </div>
-
-        <div className=" flex justify-center items-center w-[80%]   ">
+        {/* images */}
+        <div className=" flex items-center justify-center h-[45%] 2xl:container 2xl:mx-auto 2xl:px-0 py-2 px-5   ">
           <Carousel listOfVideoIndexes={listOfVideoIndexes} images={images} />
         </div>
-
-        {/* <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: [0.1, 0.8, 1] }}
-        transition={{ duration: 2.5, repeat: 1 }}
-        className=" "
-      > */}
-        <div className=" w-[90%]">
-          <p className=" mx-10 text-md md:text-lg text-[#e9e9e9]  md:mt-[50px] text-center ">
+        {/* descrption */}
+        <div className=" flex justify-center items-center  h-[40%]  w-[100%]">
+          <p className=" mx-5 text-sm md:text-lg text-[#e9e9e9]  md:mt-[50px] text-center ">
             {description}
           </p>
         </div>
-        {/* </motion.div> */}
-        <div className=" mt-[20px]  mb-[10px]">
+        {/* button */}
+        <div className=" flex justify-center items-center mt-1 ">
           {projectLink != null && (
             <MainButton
               buttonText={buttonText}

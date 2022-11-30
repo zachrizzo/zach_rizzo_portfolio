@@ -63,6 +63,7 @@ export default function Portal() {
     <>
       <primitive object={model.scene} />
       <primitive object={mask.scene} />
+
       <FillQuad map={target.texture} maskId={1} />
     </>
   );

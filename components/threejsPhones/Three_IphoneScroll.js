@@ -15,6 +15,7 @@ import Iphone13proMax2 from "./Iphone_max2";
 import Iphone13ProMax from "./Iphone13ProMax";
 import IpadPro from "./Ipad";
 import classNames from "classnames";
+
 softShadows();
 const rsqw = (t, delta = 0.1, a = 1, f = 1 / (2 * Math.PI)) =>
   (a / Math.atan(1 / delta)) * Math.atan(Math.sin(2 * Math.PI * t * f) / delta);
@@ -122,7 +123,7 @@ function Composition({ ...props }) {
     );
     group.current.position.x = THREE.MathUtils.damp(
       group.current.position.x,
-      (-width / 7) * r2,
+      (-width / 10) * r2,
       4,
       delta
     );
@@ -144,6 +145,9 @@ function Composition({ ...props }) {
     right.current ? right.current.classList.toggle("show", r3) : null;
     phone3.current ? phone3.current.classList.toggle("show", r4) : null;
   });
+  //is it on a phone?
+  const isMobile = window.innerWidth <= 700;
+
   // useFrame(() => {
   //   todo.current.material.width = todo.current.material.zoom = 3 // 1 and higher
   //   todo.current.material.grayscale = 1 // between 0 and 1
@@ -175,62 +179,68 @@ function Composition({ ...props }) {
           distance={width * 3}
         />
         {/* <Iphone13proMax2 ref={mbp16} Gltf={'/iphone_ToDo.gltf'}> */}
-        <IpadPro ref={mbp16} PositionArray={[-1.5, -1, 0]}></IpadPro>
-        <Image
-          scale={[4.5, 5.9, 2]}
-          position={[-1.5, 2.1, 0]}
-          ref={todo}
-          url="/FlowTeam/Screens/screen_baseColor.jpeg"
-        />
-        <Tag
-          ref={right}
-          // title="Flow Team"
-          // Description=" Allowed Employees to clockin and clockout of their shifts. This allowed the company to track the amount of hours worked by each employee. Fall messaging capability is very similar to slack with different channels. "
-          visableState={visableState}
-          marginLeft={tagLocation1}
-        />
-        <Iphone13ProMax
-          rotationArray={[Math.PI / 2, 5.5, 0]}
-          ref={mbp14}
-          GLTF={"/FlowTeam/gltf/Iphone13ProMaxTodoScreen.gltf"}
-          PositionArray={[-0.3, 2, 1.5]}
+        <group
+          position={
+            isMobile == 700 ? [width * 1.5, 0, 0] : [width * 0.08, 0, 0]
+          }
         >
-          {/* <Iphone13proMax2 ref={mbp14} Gltf={'/iphone_ToDo.gltf'}> */}
-        </Iphone13ProMax>
-        <Image
-          rotation={[0, -3.9, 0]}
-          scale={[2.2, 4.75, 6]}
-          position={[Math.PI / -13, 1.5, -2.08]}
-          ref={todo}
-          url="/FlowTeam/Screens/ToDoScreen.png"
-        />
-        <Tag
-          ref={phone3}
-          //title="To-Do:"
-          //Description="Keep your team on track to achiving the"
-          visableState={visableState2}
-          marginLeft={tagLocation2}
-        />
+          <IpadPro ref={mbp16} PositionArray={[-1.5, -1, 0]}></IpadPro>
+          <Image
+            scale={[4.5, 5.9, 2]}
+            position={[-1.5, 2.1, 0]}
+            ref={todo}
+            url="/FlowTeam/Screens/screen_baseColor.jpeg"
+          />
+          <Tag
+            ref={right}
+            // title="Flow Team"
+            // Description=" Allowed Employees to clockin and clockout of their shifts. This allowed the company to track the amount of hours worked by each employee. Fall messaging capability is very similar to slack with different channels. "
+            visableState={visableState}
+            marginLeft={tagLocation1}
+          />
+          <Iphone13ProMax
+            rotationArray={[Math.PI / 2, 5.5, 0]}
+            ref={mbp14}
+            GLTF={"/FlowTeam/gltf/Iphone13ProMaxTodoScreen.gltf"}
+            PositionArray={[-0.3, 2, 1.5]}
+          >
+            {/* <Iphone13proMax2 ref={mbp14} Gltf={'/iphone_ToDo.gltf'}> */}
+          </Iphone13ProMax>
+          <Image
+            rotation={[0, -3.9, 0]}
+            scale={[2.2, 4.75, 6]}
+            position={[Math.PI / -13, 1.5, -2.08]}
+            ref={todo}
+            url="/FlowTeam/Screens/ToDoScreen.png"
+          />
+          <Tag
+            ref={phone3}
+            //title="To-Do:"
+            //Description="Keep your team on track to achiving the"
+            visableState={visableState2}
+            marginLeft={tagLocation2}
+          />
 
-        <Iphone13ProMax
-          rotationArray={[Math.PI / 2, 6.9, 0]}
-          ref={phone3}
-          GLTF={"/FlowTeam/gltf/Iphone13ProMaxTodoScreen.gltf"}
-          PositionArray={[-2.7, 2, 1.5]}
-        ></Iphone13ProMax>
-        <Image
-          rotation={[0, 3.76, 0]}
-          scale={[2.2, 4.75, 6]}
-          position={[-2.75, 1.5, -2.09]}
-          ref={todo}
-          url="/FlowTeam/Screens/messaging.png"
-        />
-        <Tag
-          //title="Instant Messaging:"
-          //Description="Keep track of who's where to make sure things are done right77"
-          visableState={visableState3}
-          marginLeft={tagLocation2}
-        />
+          <Iphone13ProMax
+            rotationArray={[Math.PI / 2, 6.9, 0]}
+            ref={phone3}
+            GLTF={"/FlowTeam/gltf/Iphone13ProMaxTodoScreen.gltf"}
+            PositionArray={[-2.7, 2, 1.5]}
+          ></Iphone13ProMax>
+          <Image
+            rotation={[0, 3.76, 0]}
+            scale={[2.2, 4.75, 6]}
+            position={[-2.75, 1.5, -2.09]}
+            ref={todo}
+            url="/FlowTeam/Screens/messaging.png"
+          />
+          <Tag
+            //title="Instant Messaging:"
+            //Description="Keep track of who's where to make sure things are done right77"
+            visableState={visableState3}
+            marginLeft={tagLocation2}
+          />
+        </group>
         {/* <Html>
           <div>
             <h1> hi</h1>

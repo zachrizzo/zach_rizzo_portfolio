@@ -4,6 +4,7 @@ import BackGroundCircles from "./BackGroundCircles";
 import MainButton from "./MainButton";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { HomeIcon } from "@heroicons/react/24/solid";
 
 export default function IntroNameComponent({
   reactRef,
@@ -57,6 +58,19 @@ export default function IntroNameComponent({
           buttonText={"Automation"}
         />
       </motion.div>
+      <button
+        onClick={() => {
+          router.push("/");
+        }}
+        className="cursor-pointer p-3 -p-3 rounded-full bg-[#ffffff] z-20"
+      >
+        <HomeIcon
+          onClick={() => {
+            router.push("/");
+          }}
+          className=" cursor-pointer h-6 w-6 text-blue-500"
+        />
+      </button>
       <BackGroundCircles />
     </motion.div>
   );

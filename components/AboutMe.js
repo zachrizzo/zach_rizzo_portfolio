@@ -23,25 +23,28 @@ export default function () {
   });
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{
-        opacity: [0.1, 0.8, 1.0],
-        borderRadius: ["20%", "50%", "0"],
-      }}
-      transition={{ duration: 2.5, repeat: true }}
-      className="   flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl justify-evenly mx-auto items-center"
+    <div
+      // initial={{ opacity: 0 }}
+      // whileInView={{
+      //   opacity: [0.1, 0.8, 1.0],
+      //   borderRadius: ["20%", "50%", "0"],
+      // }}
+      // transition={{ duration: 2.5, repeat: true }}
+      className=" grid text-center  "
     >
-      <h3 className=" absolute top-5 mb-10 md:top-16 uppercase tracking-[20px] text-gray-500 text-2xl">
-        About
-      </h3>
-      <div className=" flex-col flex justify-center items-center">
-        <h4 className=" mb-[10px] text-white text-3xl">
-          Here's a{" "}
-          <span className="underline decoration-[#9b2fcc]">little</span> about
-          me
-        </h4>
-        <p className=" mt-[20px] mx-10  text-white text-center text-base">
+      <div className="my-2  h-[5%]">
+        <h3 className=" uppercase tracking-[20px] text-gray-500 text-2xl">
+          About
+        </h3>
+      </div>
+
+      <h4 className="my-2 h-[5%]  text-white text-3xl">
+        Here's a <span className="underline decoration-[#9b2fcc]">little</span>{" "}
+        about me
+      </h4>
+
+      <div className=" flex justify-center items-center md:mt-[20px] md:h-[80%]">
+        <p className=" mt-[10px] mx-10  text-white text-center text-sm md:w-[80%] md:text-lg">
           I thrive in a high pace, fast-moving environment. I love automating
           daily tasks and streamlining everyday processes. I specialize in
           finding the most efficient way to carry out any given task. Whether
@@ -57,20 +60,18 @@ export default function () {
           In my free time, I love learning new skills, scuba diving, rock
           climbing, writing music, camping, and skydiving.
         </p>
-        <div className="  flex flex-col h-[80px] justify-center items-center mb-2">
-          <div className="  grid-row-3 grid  items-center mt-[40px]">
-            <div className=" mx-[10px]">
-              <h5 className="z-20 text-lg text-center font-bold text-[#ffffff]">
-                <span>{text}</span>
-                <Cursor cursorColor="#ffffff" />
-              </h5>
-            </div>
-            <SkillsComponent />
-            {/* <SkillsComponent2 /> */}
-            <SkillsComponent3 />
-          </div>
-        </div>
       </div>
-    </motion.div>
+      <div className=" grid-cols-3 h-[10%] grid flex-row justify-center items-center md:mb-[60px] mb-2">
+        <div className="">
+          <h5 className="z-20 text-lg text-center font-bold text-[#ffffff]">
+            <span>{text}</span>
+            <Cursor cursorColor="#ffffff" />
+          </h5>
+        </div>
+        <SkillsComponent />
+        {/* <SkillsComponent2 /> */}
+        <SkillsComponent3 />
+      </div>
+    </div>
   );
 }
