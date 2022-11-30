@@ -169,7 +169,7 @@ export default function BasicProjectComponent({
     <div className=" text-center h-screen mb-[20px] flex  justify-center w-full flex-col ">
       <div className=" w-full justify-center items-center grid-rows-4 flex-col flex">
         {/* title */}
-        <div className="w-full md:mb-[40px] text-center flex flex-col  justify-center items-center h-[5%] ">
+        <div className="w-full md:mb-[40px] mb-[40px] text-center flex flex-col  justify-center items-center h-[10%] ">
           <h3 className=" text-center  uppercase tracking-[20px] text-gray-500 text-lg md:text-2xl">
             {title}
           </h3>
