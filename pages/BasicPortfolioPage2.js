@@ -8,84 +8,78 @@ import IntroNameComponent from "../components/IntroNameComonent";
 import AboutMe from "../components/AboutMe";
 import { getImageAndVideos } from "../firebase";
 export async function getStaticProps() {
-  var amaAppUrl = null;
-  var amaWebsiteUrl = null;
-  var flowTeamUrl = null;
-  var useFulRobotUrl = null;
-  var crabRobotUrl = null;
+  // var amaAppUrl = null;
+  // var amaWebsiteUrl = null;
+  // var flowTeamUrl = null;
+  // var useFulRobotUrl = null;
+  // var crabRobotUrl = null;
 
-  getImageAndVideos({
-    setUrls: amaAppUrl,
-    project: "amaApp",
-  });
-  getImageAndVideos({
-    setUrls: amaWebsiteUrl,
-    project: "amaWebsite",
-  });
-  getImageAndVideos({
-    setUrls: flowTeamUrl,
-    project: "flowTeam",
-  });
-  getImageAndVideos({
-    setUrls: useFulRobotUrl,
-    project: "useFulRobot",
-  });
-  getImageAndVideos({
-    setUrls: crabRobotUrl,
-    project: "crabRobot",
-  });
+  // getImageAndVideos({
+  //   setUrls: amaAppUrl,
+  //   project: "amaApp",
+  // });
+  // getImageAndVideos({
+  //   setUrls: amaWebsiteUrl,
+  //   project: "amaWebsite",
+  // });
+  // getImageAndVideos({
+  //   setUrls: flowTeamUrl,
+  //   project: "flowTeam",
+  // });
+  // getImageAndVideos({
+  //   setUrls: useFulRobotUrl,
+  //   project: "useFulRobot",
+  // });
+  // getImageAndVideos({
+  //   setUrls: crabRobotUrl,
+  //   project: "crabRobot",
+  // });
   return {
     props: {
-      amaAppUrl,
-      amaWebsiteUrl,
-      flowTeamUrl,
-      useFulRobotUrl,
-      crabRobotUrl,
+      // amaAppUrl,
+      // amaWebsiteUrl,
+      // flowTeamUrl,
+      // useFulRobotUrl,
+      // crabRobotUrl,
     },
   };
 }
 
-export default function BasicPortfolioPage({
-  amaAppUrl,
-  amaWebsiteUrl,
-  flowTeamUrl,
-  useFulRobotUrl,
-  crabRobotUrl,
-}) {
+export default function BasicPortfolioPage() {
   const [activeStatus, setActiveStatus] = useState(null);
   const [companyDbB, setCompanyDbB] = useState(null);
   const [iphoneScrollInView, setIphoneScrollInView] = useState(false);
   const [iphoneScrollPages, setIphoneScrollPages] = useState(0);
-  // const [amaAppUrl, setAmaAppUrl] = useState(null);
-  // const [amaWebsiteUrl, setAmaWebsiteUrl] = useState(null);
-  // const [flowTeamUrl, setFlowTeamUrl] = useState(null);
-  // const [useFulRobotUrl, setUseFulRobotUrl] = useState(null);
-  // const [crabRobotUrl, setCrabRobotUrl] = useState(null);
+  const [amaAppUrl, setAmaAppUrl] = useState(null);
+  const [amaWebsiteUrl, setAmaWebsiteUrl] = useState(null);
+  const [flowTeamUrl, setFlowTeamUrl] = useState(null);
+  const [useFulRobotUrl, setUseFulRobotUrl] = useState(null);
+  const [crabRobotUrl, setCrabRobotUrl] = useState(null);
 
-  // useEffect(() => {
-  //   // get the images and videos from firebase
-  //   getImageAndVideos({
-  //     setUrls: setAmaAppUrl,
-  //     project: "amaApp",
-  //   });
-  //   getImageAndVideos({
-  //     setUrls: setAmaWebsiteUrl,
-  //     project: "amaWebsite",
-  //   });
-  //   getImageAndVideos({
-  //     setUrls: setFlowTeamUrl,
-  //     project: "flowTeam",
-  //   });
-  //   getImageAndVideos({
-  //     setUrls: setUseFulRobotUrl,
-  //     project: "useFulRobot",
-  //   });
-  //   getImageAndVideos({
-  //     setUrls: setCrabRobotUrl,
-  //     project: "crabRobot",
-  //   });
-  //   console.log("useful robot", amaAppUrl);
-  // }, []);
+  useEffect(() => {
+    // get the images and videos from firebase
+    getImageAndVideos({
+      setUrls: setAmaAppUrl,
+      project: "amaApp",
+    });
+    getImageAndVideos({
+      setUrls: setAmaWebsiteUrl,
+      project: "amaWebsite",
+    });
+    getImageAndVideos({
+      setUrls: setFlowTeamUrl,
+      project: "flowTeam",
+    });
+    getImageAndVideos({
+      setUrls: setUseFulRobotUrl,
+      project: "useFulRobot",
+    });
+    getImageAndVideos({
+      setUrls: setCrabRobotUrl,
+      project: "crabRobot",
+    });
+    console.log("useful robot", amaAppUrl);
+  }, []);
 
   const reactRef = useRef(null);
   const RoboticsRef = useRef(null);

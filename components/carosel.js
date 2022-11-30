@@ -148,9 +148,8 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                       key={index}
                       className="carousel-item text-center relative w-64 h-64 snap-start"
                     >
-                      {/* q:how to open url in new tab 
-
-                    */}
+                      {/* q:how to open url in new tab
+                       */}
                       <div
                         className=" text-xs h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                         style={{
