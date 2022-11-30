@@ -46,16 +46,16 @@ export default function () {
           daily tasks and streamlining everyday processes. I specialize in
           finding the most efficient way to carry out any given task. Whether
           it's creating a program to read and distribute faxes automatically
-          using OCR(Optical character recognition) or a program that goes
-          through an EMR and grabs the information of 15,000 patients to put in
-          a spreadsheet. I love challenges and solving problems. Having
-          developed two apps on the app store and multiple web-based
-          applications, my passion for Ui/UX is unmatched. I have experience
-          creating and maintaining software used by the public in many different
-          stages. I am currently learning about robotics and Machine learning in
-          hopes of adding that to my quiver of arrows soon. In my free time, I
-          love learning new skills, scuba diving, rock climbing, writing music,
-          camping, and skydiving.
+          using OCR (Optical Character Recognition) or a program that goes
+          through an EMR (Electronic Medical Records) and grabs the information
+          of 15,000 patients to put in a spreadsheet. I love challenges and
+          solving problems. Having developed two apps on the app store and
+          multiple web-based applications, my passion for Ui/UX is unmatched. I
+          have experience creating and maintaining software used by the public
+          in many different stages. I am currently learning about robotics and
+          Machine learning in hopes of adding that to my quiver of arrows soon.
+          In my free time, I love learning new skills, scuba diving, rock
+          climbing, writing music, camping, and skydiving.
         </p>
         <div className=" h-[70px] mb-2">
           <div className=" flex flex-row justify-between  items-center mt-[40px]">

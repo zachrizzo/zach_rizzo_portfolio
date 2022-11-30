@@ -127,7 +127,7 @@ export default function BasicPortfolioPage() {
             images={amaAppUrl}
             title={"AMA App"}
             description={
-              " I created the AMA app while working at American Medical Associates as a software engineer. The purpose of this app was to help streamline all processes of the AMA staff on the backend whether it was inventory management using a barcode scanner or allowing the managers to keep track of the money going in and out of the clinic. Users were also able to send messages, set to-do lists, and keep track of their schedules. I created this app using React Native and Firebase."
+              " I created the AMA app while working at American Medical Associates as a software engineer. The purpose of this app was to help streamline all processes of the AMA staff on the backend whether it was inventory management, using a barcode scanner or allowing the managers to keep track of the money going in and out of the clinic. Users were also able to send messages, set to-do lists, and keep track of their schedules. I created this app using React Native and Firebase."
             }
             listOfVideoIndexes={[9]}
             buttonText={"View Project"}
@@ -140,7 +140,7 @@ export default function BasicPortfolioPage() {
             images={amaWebsiteUrl}
             title={"AMA Website"}
             description={
-              "This react website was created in conjunction with the AMA app. The  purpose react websites was to handle all of the backend processes that the app could not. Some of the features the website offers were sending text messages to patients after visits, allowing employees to apply for specific positions, allowed patients to fill out new patient packets, allowed the tracking and management of different departments within the organization, allowed for IT support tickets to be submitted and worked on, and allowed for the management of the inventory. I created this website using React, Next.JS, TailWind, and Firebase."
+              "This react website was created in conjunction with the AMA app. The  purpose of the react website was to handle all of the backend processes that the app could not. Some of the features the website offers are sending text messages to patients after visits, allowing employees to apply for specific positions, allowing patients to fill out new patient packets, allowing the tracking and management of different departments within the organization, allowing for IT support tickets to be submitted and worked on, and allowing for the management of inventory. I created this website using React, Next.JS, TailWind, and Firebase."
             }
             listOfVideoIndexes={[7]}
             buttonText={"View Project"}
@@ -154,20 +154,22 @@ export default function BasicPortfolioPage() {
           <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
             FlowTeam
           </h3>
-          <IphoneScroll
-            pages={iphoneScrollPages}
-            enabled={iphoneScrollInView}
-          />
+          <div className=" w-full h-[70%]">
+            <IphoneScroll
+              pages={iphoneScrollPages}
+              enabled={iphoneScrollInView}
+            />
+          </div>
         </div>
         <div className=" h-[50px] w-full"></div>
         <div className=" w-[90%] snap-center">
           <p className=" text-xl text-[#e9e9e9]  mt-[250px] text-center ">
             Flow Team is a mobile app that was created to help companies manage
-            teams with ease. Flow Team has many features some of them are time
-            tracking for employees using Geo location, the ability to create
-            multiple teams and shared to-do lists between them, with messaging
-            capabilities similar to slack that allow for multiple channels and
-            teams, and more. This app using React Native and Firebase.
+            teams with ease. Flow Team has many features some of them including
+            time tracking for employees using Geo location, the ability to
+            create multiple teams and shared to-do lists between them, messaging
+            capabilities similar to Slack&#174; that allow for multiple channels
+            and teams, and more. This app using React Native and Firebase.
           </p>
         </div>
         <div className=" mt-[20px]  mb-[10px]">
@@ -199,7 +201,7 @@ export default function BasicPortfolioPage() {
             videosVertical={[]}
             videosHorizontal={[]}
             description={
-              "This is a robot is research project that I built to learn SLAM (Simultaneous Localization and Mapping) and ROS 2 Foxy. In the future I will be adding an arm on top so it can interact with objects. These interactions will be assisted by an Intel real sense camera which is equipped with stereo depth cameras that allow for accurate measurement of distance. After obtaining the measurement it will perform inverse  kinematics to accurately interact with objects. I designed the robot housing and was able to bring it to life using a 3D printer. This robot runs on a Nvidia Jetson Xavier NX and a 12 V power supply."
+              "This robot is a research project that I built to learn SLAM (Simultaneous Localization and Mapping) and ROS 2 Foxy. In the future, I will be adding an arm on top so it can interact with objects. These interactions will be assisted by an Intel Real Sense camera which is equipped with stereo depth cameras that allow for accurate measurement of distances. After obtaining the measurement it will perform inverse  kinematics to accurately interact with objects. I designed the robot housing and was able to bring it to life using a 3D printer. This robot runs an Nvidia Jetson Xavier NX and a 12 V power supply."
             }
             listOfVideoIndexes={[0]}
             projectLink={"https://github.com/zachrizzo/UsefulRobot"}
@@ -213,7 +215,7 @@ export default function BasicPortfolioPage() {
             videosVertical={[]}
             title={"Crab Robot"}
             description={
-              "The Crab was inspired by mini walking robots such as spot by Boston dynamics. The Crab was built using an  raspberry pi pico running MicroPython. Each arm in the robot has multiple degrees of freedom. This robot is still in the research phases as I am  trying to find the proper inverse kinematics to counteract the offset weight balance. This robot has a solar powered battery pack and it's designed to run many hours, it will be equipped with a camera and run Tensorflow light for object Detection."
+              "The Crab was inspired by many walking robots such as Spot by Boston Dynamics. The Crab was built using a Raspberry Pi Pico running MicroPython. Each arm in the robot has multiple degrees of freedom. This robot is still in the research phases as I am trying to find the proper inverse kinematics to counteract the offset weight balance. This robot has a solar powered battery pack and it's designed to run many hours. It will be equipped with a camera and run Tensorflow Light for object detection."
             }
             listOfVideoIndexes={[0, 1]}
             buttonText={"View Project"}
@@ -269,7 +271,7 @@ export default function BasicPortfolioPage() {
           videosVertical={[]}
           videosHorizontal={[]}
           description={
-            "At American Medical Associates we were experiencing a high number of faxes to the point where we didn't have enough staff to read them. As a solution I created a program that uses OCR (Optical Character Recognition) to read each fax individually and perform the tasks needed in order to send it to the providers. By using their EMR, I developed a Python bot that would navigate the EMR, download the fax, read it, and send the fax where it needed to go."
+            "At American Medical Associates we were experiencing a high number of faxes to the point where we didn't have enough staff to read them. As a solution, I created a program that uses OCR (Optical Character Recognition) to read each fax individually and perform the tasks needed in order to send it to the providers. By using their EMR , I developed a Python bot that would navigate the EMR, download the fax, read it, and send the fax where it needed to go."
           }
           listOfVideoIndexes={[]}
           projectLink={"https://github.com/zachrizzo/Read_ama_fax"}
@@ -283,7 +285,7 @@ export default function BasicPortfolioPage() {
           videosHorizontal={[]}
           title={"Email Automation"}
           description={
-            "With 15,000 patients at American Medical Associates, creating an email campaign was near impossible with no way to access all of their emails. as a solution I developed a python bot that went through the EMR and pulled each email from the 15,000 patients and put it into a spreads using Numpy so that we may run marketing campaigns."
+            "With 15,000 patients at American Medical Associates, creating an email campaign was nearly impossible with no way to access all of their email address. As a solution, I developed a Python bot that went through the EMR and pulled each email address from the 15,000 patients and put it into a spreadsheets using Numpy to enable marketing campaigns."
           }
           listOfVideoIndexes={[]}
           projectLink={"https://github.com/zachrizzo/Geat_allPatient_emails"}
