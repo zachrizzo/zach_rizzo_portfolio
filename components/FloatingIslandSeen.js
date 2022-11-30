@@ -1,28 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Html,
-  useGLTF,
-  softShadows,
   ScrollControls,
-  useScroll,
-  useTexture,
   OrbitControls,
-  CameraShake,
-  Sphere,
-  MeshDistortMaterial,
-  Circle,
-  Point,
-  Points,
   Environment,
   PerspectiveCamera,
   Float,
-  PresentationControls,
 } from "@react-three/drei";
 import { GodRays } from "@react-three/postprocessing";
 import { BlendFunction, Resizer, KernelSize } from "postprocessing";
 import { useRouter } from "next/router";
 import { Color, CylinderGeometry, Mesh, MeshBasicMaterial } from "three";
-import { Suspense, useMemo } from "react";
+
 import FloatingIsland from "../components/FloatingIsland";
 import PortalComponent from "../components/PortalComponent";
 import IslandRocks from "../components/IslandRocks";

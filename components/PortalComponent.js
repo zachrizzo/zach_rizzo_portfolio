@@ -38,9 +38,9 @@ export default function Portal() {
   const mask = useLoader(GLTFLoader, "/models/floating_island/portal_mask.glb");
 
   useFrame((state) => {
-    state.gl.setRenderTarget(target);
-    state.gl.render(scene, state.camera);
-    state.gl.setRenderTarget(null);
+    state?.gl?.setRenderTarget(target);
+    state?.gl?.render(scene, state.camera);
+    state?.gl?.setRenderTarget(null);
   });
   //check if document is defined
 
@@ -64,7 +64,7 @@ export default function Portal() {
       <primitive object={model.scene} />
       <primitive object={mask.scene} />
 
-      <FillQuad map={target.texture} maskId={1} />
+      <FillQuad map={target?.texture} maskId={1} />
     </>
   );
 }

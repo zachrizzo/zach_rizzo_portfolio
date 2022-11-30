@@ -146,7 +146,7 @@ function Composition({ ...props }) {
     phone3.current ? phone3.current.classList.toggle("show", r4) : null;
   });
   //is it on a phone?
-  const isMobile = window.innerWidth <= 700;
+  const isMobile = window.innerWidth <= 800;
 
   // useFrame(() => {
   //   todo.current.material.width = todo.current.material.zoom = 3 // 1 and higher
@@ -180,9 +180,8 @@ function Composition({ ...props }) {
         />
         {/* <Iphone13proMax2 ref={mbp16} Gltf={'/iphone_ToDo.gltf'}> */}
         <group
-          position={
-            isMobile == 700 ? [width * 1.5, 0, 0] : [width * 0.08, 0, 0]
-          }
+          position={isMobile ? [width * 0.14, 0, 0] : [width * 0.06, 0, 0]}
+          // position={[width * 0.07, 0, 0]}
         >
           <IpadPro ref={mbp16} PositionArray={[-1.5, -1, 0]}></IpadPro>
           <Image

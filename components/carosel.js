@@ -120,7 +120,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
 
                         href={images.url}
                         target="_blank"
-                        className="h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
+                        className="h-full w-full aspect-square inline-flex  bg-origin-padding   bg-no-repeat z-0"
                         style={{
                           backgroundImage: `url(${images.url || ""})`,
                         }}
@@ -134,7 +134,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                       <a
                         href={images.url}
                         target="_blank"
-                        className="h-full w-full aspect-square text-xs block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
+                        className="h-full w-full aspect-square text-xs  absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
                       >
                         <h3 className="text-white my-6  mx-auto text-xs">
                           {images.url}
@@ -151,23 +151,21 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                       {/* q:how to open url in new tab 
 
                     */}
-                      {/* <a
-                        href={images.url}
-                        target="_blank"
+                      <div
                         className=" text-xs h-full w-full aspect-square block bg-origin-padding bg-left-top bg-cover bg-no-repeat z-0"
                         style={{
                           backgroundImage: `url(${images.url || ""})`,
                         }}
-                      > */}
-                      <video
-                        // src={images || ""}
-                        // alt={images}
-                        className="w-full aspect-square "
-                        controls
                       >
-                        <source src={images.url || ""} type="video/mp4" />
-                      </video>
-                      {/* </a> */}
+                        <video
+                          // src={images || ""}
+                          // alt={images}
+                          className="w-full aspect-square "
+                          controls
+                        >
+                          <source src={images.url || ""} type="video/mp4" />
+                        </video>
+                      </div>
                       {/* <a
                         href={images.url}
                         className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
