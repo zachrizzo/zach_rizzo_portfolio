@@ -96,57 +96,52 @@ export default function BasicPortfolioPage() {
     }
   };
   return (
-    <div className="  overflow-x-hidden  bg-[rgb(36,36,36)] flex-col flex w-full  h-screen overflow-scroll z-0 ">
+    <div className="  overflow-x-hidden  bg-[rgb(36,36,36)]  w-full  h-screen z-0 ">
       <section id="hero" className="w-full snap-center">
         <IntroNameComponent />
       </section>
 
       {/* if not on desk top dont show particle text */}
       <div className=" hidden md:block">{/* <ParticleText /> */}</div>
-      <section id="about" className="w-full snap-center">
+      <div className="my-[50px] h-screen">
         <AboutMe />
-      </section>
+      </div>
 
       {/* projects */}
-      <section
-        id={"react"}
-        ref={reactRef}
-        className=" flex-col my-[100px]  flex justify-center items-center"
-      >
-        <div className="h-screen snap-center text-center ">
-          <h4 className="mb-2  text-[#a631f0] text-3xl md:text-5xl font-bold">
-            React & React Native
-          </h4>
-          <BasicProjectComponent
-            className
-            videosVertical={[
-              "/portfolioImages/amaApp/RPReplay_Final1669607984.MP4",
-            ]}
-            videosHorizontal={[]}
-            projectLink={"https://github.com/zachrizzo/AMA_APP"}
-            images={amaAppUrl}
-            title={"AMA App"}
-            description={
-              " I created the AMA app while working at American Medical Associates as a software engineer. The purpose of this app was to help streamline all processes of the AMA staff on the backend whether it was inventory management, using a barcode scanner or allowing the managers to keep track of the money going in and out of the clinic. Users were also able to send messages, set to-do lists, and keep track of their schedules. I created this app using React Native and Firebase."
-            }
-            listOfVideoIndexes={[9]}
-            buttonText={"View Project"}
-          />
-        </div>
-        <div className=" h-screen snap-center">
-          <BasicProjectComponent
-            videosVertical={[]}
-            videosHorizontal={[]}
-            images={amaWebsiteUrl}
-            title={"AMA Website"}
-            description={
-              "This react website was created in conjunction with the AMA app. The  purpose of the react website was to handle all of the backend processes that the app could not. Some of the features the website offers are sending text messages to patients after visits, allowing employees to apply for specific positions, allowing patients to fill out new patient packets, allowing the tracking and management of different departments within the organization, allowing for IT support tickets to be submitted and worked on, and allowing for the management of inventory. I created this website using React, Next.JS, TailWind, and Firebase."
-            }
-            listOfVideoIndexes={[7]}
-            buttonText={"View Project"}
-            projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
-          />
-        </div>
+      <section id={"react"} ref={reactRef} className="  text-center ">
+        <h4 className="mb-2  text-[#a631f0] text-3xl md:text-5xl font-bold">
+          React & React Native
+        </h4>
+
+        <BasicProjectComponent
+          className
+          videosVertical={[
+            "/portfolioImages/amaApp/RPReplay_Final1669607984.MP4",
+          ]}
+          videosHorizontal={[]}
+          projectLink={"https://github.com/zachrizzo/AMA_APP"}
+          images={amaAppUrl}
+          title={"AMA App"}
+          description={
+            " I created the AMA app while working at American Medical Associates as a software engineer. The purpose of this app was to help streamline all processes of the AMA staff on the backend whether it was inventory management, using a barcode scanner or allowing the managers to keep track of the money going in and out of the clinic. Users were also able to send messages, set to-do lists, and keep track of their schedules. I created this app using React Native and Firebase."
+          }
+          listOfVideoIndexes={[9]}
+          buttonText={"View Project"}
+        />
+
+        <BasicProjectComponent
+          videosVertical={[]}
+          videosHorizontal={[]}
+          images={amaWebsiteUrl}
+          title={"AMA Website"}
+          description={
+            "This react website was created in conjunction with the AMA app. The  purpose of the react website was to handle all of the backend processes that the app could not. Some of the features the website offers are sending text messages to patients after visits, allowing employees to apply for specific positions, allowing patients to fill out new patient packets, allowing the tracking and management of different departments within the organization, allowing for IT support tickets to be submitted and worked on, and allowing for the management of inventory. I created this website using React, Next.JS, TailWind, and Firebase."
+          }
+          listOfVideoIndexes={[7]}
+          buttonText={"View Project"}
+          projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
+        />
+
         {/* <div
           
           className="  flex items-center justify-center flex-col snap-y snap-mandatory snap-center snap-always  w-full h-screen"
@@ -161,18 +156,21 @@ export default function BasicPortfolioPage() {
             />
           </div>
         </div> */}
-        <div className=" h-[50px] w-full"></div>
-        <div className=" h-screen flex flex-col justify-center items-center w-[90%] snap-center">
+        {/* <div className=" h-[50px] mt-[50px] w-full"></div> */}
+        <div className=" h-screen flex flex-col justify-center items-center w-full snap-center">
           <h3 className=" top-1 uppercase tracking-[20px] text-gray-500 text-2xl">
             FlowTeam
           </h3>
-          <div ref={listInnerRef} className=" w-full h-[45%]">
+          <div
+            ref={listInnerRef}
+            className=" flex justify-center items-center w-full md:h-[70%] h-[45%]"
+          >
             <IphoneScroll
               pages={iphoneScrollPages}
               enabled={iphoneScrollInView}
             />
           </div>
-          <p className=" text-xl text-[#e9e9e9]  mt-[20px] text-center ">
+          <p className="md:text-lg md: mx-5 text-sm text-[#e9e9e9]  mt-[20px] text-center ">
             Flow Team is a mobile app that was created to help companies manage
             teams with ease. Flow Team has many features some of them including
             time tracking for employees using Geo location, the ability to
@@ -195,42 +193,38 @@ export default function BasicPortfolioPage() {
         </div>
       </section>
 
-      <div
-        id={"robots"}
-        ref={RoboticsRef}
-        className=" flex-col my-[100px] w-full flex justify-center items-center"
-      >
-        <section className=" text-center  flex justify-center items-center flex-col snap-center h-screen">
-          <h4 className="mb-5 text-[#a631f0] text-3xl md:text-5xl font-bold">
-            Robotics & Research
-          </h4>
-          <BasicProjectComponent
-            images={useFulRobotUrl}
-            title={"Useful Robot"}
-            videosVertical={[]}
-            videosHorizontal={[]}
-            description={
-              "This robot is a research project that I built to learn SLAM (Simultaneous Localization and Mapping) and ROS 2 Foxy. In the future, I will be adding an arm on top so it can interact with objects. These interactions will be assisted by an Intel Real Sense camera which is equipped with stereo depth cameras that allow for accurate measurement of distances. After obtaining the measurement it will perform inverse  kinematics to accurately interact with objects. I designed the robot housing and was able to bring it to life using a 3D printer. This robot runs an Nvidia Jetson Xavier NX and a 12 V power supply."
-            }
-            listOfVideoIndexes={[0]}
-            projectLink={"https://github.com/zachrizzo/UsefulRobot"}
-            buttonText={"View Project"}
-          />
-        </section>
-        <section className=" flex justify-center items-center flex-col snap-center h-screen">
-          <BasicProjectComponent
-            images={crabRobotUrl}
-            videosHorizontal={[]}
-            videosVertical={[]}
-            title={"Crab Robot"}
-            description={
-              "The Crab was inspired by many walking robots such as Spot by Boston Dynamics. The Crab was built using a Raspberry Pi Pico running MicroPython. Each arm in the robot has multiple degrees of freedom. This robot is still in the research phases as I am trying to find the proper inverse kinematics to counteract the offset weight balance. This robot has a solar powered battery pack and it's designed to run many hours. It will be equipped with a camera and run Tensorflow Light for object detection."
-            }
-            listOfVideoIndexes={[0, 1]}
-            buttonText={"View Project"}
-          />
-        </section>
-      </div>
+      <section id={"robots"} ref={RoboticsRef} className=" text-center">
+        <h4 className="mb-2 text-[#a631f0] text-3xl md:text-5xl font-bold">
+          Robotics & Research
+        </h4>
+        <BasicProjectComponent
+          images={useFulRobotUrl}
+          title={"Useful Robot"}
+          videosVertical={[]}
+          videosHorizontal={[]}
+          description={
+            "This robot is a research project that I built to learn SLAM (Simultaneous Localization and Mapping) and ROS 2 Foxy. In the future, I will be adding an arm on top so it can interact with objects. These interactions will be assisted by an Intel Real Sense camera which is equipped with stereo depth cameras that allow for accurate measurement of distances. After obtaining the measurement it will perform inverse  kinematics to accurately interact with objects. I designed the robot housing and was able to bring it to life using a 3D printer. This robot runs an Nvidia Jetson Xavier NX and a 12 V power supply."
+          }
+          listOfVideoIndexes={[0]}
+          projectLink={"https://github.com/zachrizzo/UsefulRobot"}
+          buttonText={"View Project"}
+        />
+
+        <BasicProjectComponent
+          images={crabRobotUrl}
+          videosHorizontal={[]}
+          videosVertical={[]}
+          title={"Crab Robot"}
+          description={
+            "The Crab was inspired by many walking robots such as Spot by Boston Dynamics. The Crab was built using a Raspberry Pi Pico running MicroPython. Each arm in the robot has multiple degrees of freedom. This robot is still in the research phases as I am trying to find the proper inverse kinematics to counteract the offset weight balance. This robot has a solar powered battery pack and it's designed to run many hours. It will be equipped with a camera and run Tensorflow Light for object detection."
+          }
+          listOfVideoIndexes={[0, 1]}
+          buttonText={"View Project"}
+        />
+      </section>
+
+      {/*  */}
+      {/*  */}
       {/* <div ref={machineLearningRef} className=" flex-col my-[100px] w-full flex justify-center items-center">
           <h4 className="mb-20 text-[#a631f0] text-5xl font-bold">
             Machine learning
@@ -265,8 +259,11 @@ export default function BasicPortfolioPage() {
             buttonText={"View Project"}
           />
         </div> */}
+      {/*  */}
+      {/*  */}
+      {/*  */}
 
-      <section
+      {/* <section
         id="automation"
         ref={automationRef}
         className=" text-center flex justify-center items-center flex-col snap-center h-screen"
@@ -300,7 +297,7 @@ export default function BasicPortfolioPage() {
           projectLink={"https://github.com/zachrizzo/Geat_allPatient_emails"}
           buttonText={"View Project"}
         />
-      </section>
+      </section> */}
     </div>
   );
 }
