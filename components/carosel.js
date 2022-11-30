@@ -53,7 +53,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
   }, []);
 
   return (
-    <div className=" rounded-3xl carousel my-5 flex-grow-0 flex justify-center item-center w-screen mx-10">
+    <div className=" rounded-3xl carousel my-12 flex-grow-0 flex justify-center item-center w-screen mx-10">
       <div className="relative w-[60%] overflow-hidden">
         <div className="flex justify-between absolute top left w-full h-full">
           <button

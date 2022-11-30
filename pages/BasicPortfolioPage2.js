@@ -149,12 +149,12 @@ export default function BasicPortfolioPage() {
         </div>
         <div
           ref={listInnerRef}
-          className="  flex items-center justify-center flex-col snap-y snap-mandatory snap-center snap-always  w-full h-[80vh]"
+          className="  flex items-center justify-center flex-col snap-y snap-mandatory snap-center snap-always  w-full h-screen"
         >
           <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
             FlowTeam
           </h3>
-          <div className=" w-full h-[70%]">
+          <div className=" w-full h-[30%]">
             <IphoneScroll
               pages={iphoneScrollPages}
               enabled={iphoneScrollInView}
