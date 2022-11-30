@@ -163,6 +163,15 @@ export default function BasicPortfolioPage() {
         </div>
         <div className=" h-[50px] w-full"></div>
         <div className=" w-[90%] snap-center">
+          <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
+            FlowTeam
+          </h3>
+          <div className=" w-full h-[30%]">
+            <IphoneScroll
+              pages={iphoneScrollPages}
+              enabled={iphoneScrollInView}
+            />
+          </div>
           <p className=" text-xl text-[#e9e9e9]  mt-[250px] text-center ">
             Flow Team is a mobile app that was created to help companies manage
             teams with ease. Flow Team has many features some of them including
