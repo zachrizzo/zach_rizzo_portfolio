@@ -179,7 +179,7 @@ export default function BasicProjectComponent({
           <Carousel listOfVideoIndexes={listOfVideoIndexes} images={images} />
         </div>
         {/* descrption */}
-        <div className=" flex justify-center items-center  h-[40%]  w-[100%]">
+        <div className="mb-[30px] flex justify-center items-center  h-[40%]  w-[100%]">
           <p className=" mx-5 text-sm md:text-lg text-[#e9e9e9]  md:mt-[50px] text-center ">
             {description}
           </p>

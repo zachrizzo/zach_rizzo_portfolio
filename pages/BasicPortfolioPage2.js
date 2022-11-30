@@ -300,7 +300,7 @@ export default function BasicPortfolioPage() {
       {/*  */}
       {/*  */}
 
-      {/* <section
+      <section
         id="automation"
         ref={automationRef}
         className=" text-center flex justify-center items-center flex-col snap-center h-screen"
@@ -334,7 +334,7 @@ export default function BasicPortfolioPage() {
           projectLink={"https://github.com/zachrizzo/Geat_allPatient_emails"}
           buttonText={"View Project"}
         />
-      </section> */}
+      </section>
     </div>
   );
 }
