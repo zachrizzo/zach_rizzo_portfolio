@@ -128,7 +128,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                         <img
                           src={images.url || ""}
                           alt={images.url}
-                          className="w-full object-cover"
+                          className="w-full object-fill bg-repeat-space"
                         />
                       </a>
                       <a
@@ -136,7 +136,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                         target="_blank"
                         className="h-full w-full aspect-square text-xs block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
                       >
-                        <h3 className="text-white my-6 mx-3 mx-auto text-xs">
+                        <h3 className="text-white my-6  mx-auto text-xs">
                           {images.url}
                         </h3>
                       </a>

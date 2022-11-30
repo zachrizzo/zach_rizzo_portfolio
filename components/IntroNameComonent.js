@@ -15,7 +15,7 @@ export default function IntroNameComponent({
     words: [
       "Hi, My Name is Zach Rizzo",
       "<software engineer/>",
-      "console.log('UI/UX Designer')",
+      // "console.log('UI/UX Designer')",
     ],
     loop: true,
     typeSpeed: 50,
@@ -28,7 +28,7 @@ export default function IntroNameComponent({
       transition={{ duration: 2.5, repeat: false }}
       className="h-screen  flex flex-col space-y-8 items-center justify-center text-center overflow-hidden "
     >
-      <h1 className="z-20 text-5xl font-bold text-[#ffffff]">
+      <h1 className="z-20 text-4xl font-bold text-[#ffffff]">
         <span>{text}</span>
         <Cursor cursorColor="#ffffff" />
       </h1>
