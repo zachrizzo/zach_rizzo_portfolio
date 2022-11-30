@@ -147,8 +147,8 @@ export default function BasicPortfolioPage() {
             projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
           />
         </div>
-        <div
-          ref={listInnerRef}
+        {/* <div
+          
           className="  flex items-center justify-center flex-col snap-y snap-mandatory snap-center snap-always  w-full h-screen"
         >
           <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
@@ -160,19 +160,19 @@ export default function BasicPortfolioPage() {
               enabled={iphoneScrollInView}
             />
           </div>
-        </div>
+        </div> */}
         <div className=" h-[50px] w-full"></div>
-        <div className=" w-[90%] snap-center">
-          <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">
+        <div className=" h-screen flex flex-col justify-center items-center w-[90%] snap-center">
+          <h3 className=" top-1 uppercase tracking-[20px] text-gray-500 text-2xl">
             FlowTeam
           </h3>
-          <div className=" w-full h-[30%]">
+          <div ref={listInnerRef} className=" w-full h-[45%]">
             <IphoneScroll
               pages={iphoneScrollPages}
               enabled={iphoneScrollInView}
             />
           </div>
-          <p className=" text-xl text-[#e9e9e9]  mt-[250px] text-center ">
+          <p className=" text-xl text-[#e9e9e9]  mt-[20px] text-center ">
             Flow Team is a mobile app that was created to help companies manage
             teams with ease. Flow Team has many features some of them including
             time tracking for employees using Geo location, the ability to
@@ -180,18 +180,18 @@ export default function BasicPortfolioPage() {
             capabilities similar to Slack&#174; that allow for multiple channels
             and teams, and more. This app using React Native and Firebase.
           </p>
-        </div>
-        <div className=" mt-[20px]  mb-[10px]">
-          <MainButton
-            buttonText={"View Project"}
-            onClick={() => {
-              //send the user to link in a new tab
-              window.open(
-                "https://github.com/zachrizzo/team_Flow_productiviity_app_v3",
-                "_blank"
-              );
-            }}
-          />
+          <div className=" mt-[20px]  mb-[10px]">
+            <MainButton
+              buttonText={"View Project"}
+              onClick={() => {
+                //send the user to link in a new tab
+                window.open(
+                  "https://github.com/zachrizzo/team_Flow_productiviity_app_v3",
+                  "_blank"
+                );
+              }}
+            />
+          </div>
         </div>
       </section>
 
