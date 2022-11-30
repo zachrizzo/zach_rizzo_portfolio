@@ -128,7 +128,7 @@ const Carousel = ({ images, listOfVideoIndexes }) => {
                         <img
                           src={images.url || ""}
                           alt={images.url}
-                          className="w-full object-fill bg-repeat-space"
+                          className="w-full "
                         />
                       </a>
                       <a

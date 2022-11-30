@@ -96,7 +96,7 @@ export default function BasicPortfolioPage() {
     }
   };
   return (
-    <div className=" snap-y snap-mandatory overflow-x-hidden  bg-[rgb(36,36,36)] flex-col flex w-full  h-screen overflow-scroll z-0 ">
+    <div className="  overflow-x-hidden  bg-[rgb(36,36,36)] flex-col flex w-full  h-screen overflow-scroll z-0 ">
       <section id="hero" className="w-full snap-center">
         <IntroNameComponent />
       </section>

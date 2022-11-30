@@ -57,10 +57,10 @@ export default function () {
           In my free time, I love learning new skills, scuba diving, rock
           climbing, writing music, camping, and skydiving.
         </p>
-        <div className=" h-[70px] mb-2">
-          <div className=" flex flex-row justify-between  items-center mt-[40px]">
+        <div className="  flex flex-col h-[80px] justify-center items-center mb-2">
+          <div className="  grid-row-3 grid  items-center mt-[40px]">
             <div className=" mx-[10px]">
-              <h5 className="z-20 text-lg font-bold text-[#ffffff]">
+              <h5 className="z-20 text-lg text-center font-bold text-[#ffffff]">
                 <span>{text}</span>
                 <Cursor cursorColor="#ffffff" />
               </h5>

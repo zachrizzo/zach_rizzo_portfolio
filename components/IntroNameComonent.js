@@ -13,7 +13,7 @@ export default function IntroNameComponent({
   const router = useRouter();
   const [text, count] = useTypewriter({
     words: [
-      "Hi, My Name is Zach Rizzo",
+      "Hi, My Name is Zach",
       "<software engineer/>",
       // "console.log('UI/UX Designer')",
     ],
@@ -28,7 +28,7 @@ export default function IntroNameComponent({
       transition={{ duration: 2.5, repeat: false }}
       className="h-screen  flex flex-col space-y-8 items-center justify-center text-center overflow-hidden "
     >
-      <h1 className="z-20 text-4xl font-bold text-[#ffffff]">
+      <h1 className="z-20 text-3xl font-bold text-[#ffffff]">
         <span>{text}</span>
         <Cursor cursorColor="#ffffff" />
       </h1>

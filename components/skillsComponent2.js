@@ -36,8 +36,8 @@ export default function SkillsComponent2({
     delaySpeed: 3000,
   });
   return (
-    <div className=" mx-[20px]">
-      <h5 className="z-20 text-lg font-bold text-[#ffffff]">
+    <div className=" w-full mx-[20px]">
+      <h5 className="z-20 text-center text-lg font-bold text-[#ffffff]">
         <span>{text}</span>
         <Cursor cursorColor="#ffffff" />
       </h5>
