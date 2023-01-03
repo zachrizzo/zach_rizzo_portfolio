@@ -122,7 +122,7 @@ export default function FloatingIslandSeen() {
             //   setGodRaysWeight(i) / 800;
           }
         }
-        await new Promise((r) => setTimeout(r, 1000));
+        await new Promise((r) => setTimeout(r, 4000));
       };
       IncreaseGodRays().then(() => {
         //console.log("done");
