@@ -113,22 +113,22 @@ export default function FloatingIslandSeen() {
       cameraRef.current.position.y < maxScrollY &&
       cameraRef.current.position.z < 13
     ) {
-      // const IncreaseGodRays = async () => {
-      //   for (let i = 0; i < percentageX * 100; i++) {
-      //     if (i > 10) {
-      //       setGodRaysExposure(i / 10);
-      //       // setGodRaysDecay(i / 15);
-      //       setGodRaysDensity(i / 12);
-      //       //   setGodRaysWeight(i) / 800;
-      //     }
-      //   }
-      //   await new Promise((r) => setTimeout(r, 4000));
-      // };
-      // IncreaseGodRays().then(() => {
-      //   //console.log("done");
+      const IncreaseGodRays = async () => {
+        for (let i = 0; i < percentageX * 100; i++) {
+          if (i > 10) {
+            setGodRaysExposure(i / 10);
+            // setGodRaysDecay(i / 15);
+            setGodRaysDensity(i / 12);
+            //   setGodRaysWeight(i) / 800;
+          }
+        }
+        await new Promise((r) => setTimeout(r, 4000));
+      };
+      IncreaseGodRays().then(() => {
+        //console.log("done");
 
-      router.replace("/BasicPortfolioPage2");
-      // });
+        router.replace("/BasicPortfolioPage2");
+      });
     } else {
       //set good rays back to normal
       setGodRaysExposure(0.3);

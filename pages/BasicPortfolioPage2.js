@@ -122,7 +122,9 @@ export default function BasicPortfolioPage() {
       // }
     });
 
-    observer.observe(listInnerRef.current);
+    if (listInnerRef.current) {
+      observer.observe(listInnerRef.current);
+    }
   }, []);
 
   const onScroll = () => {
