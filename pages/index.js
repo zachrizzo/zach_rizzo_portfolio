@@ -19,6 +19,7 @@ export function getServerSideProps() {
 const Home = () => {
   const y = [1, 2, 3, 4];
   var numberOfP = Array(10);
+  const [loading, setLoading] = useState(true);
 
   // const [godRaysExposure, setGodRaysExposure] = useState(0.3);
   // const [godRaysDecay, setGodRaysDecay] = useState(0.97);
@@ -55,6 +56,17 @@ const Home = () => {
   mesh.rotation.x = Math.PI * 0.5;
   mesh.position.set(1.17, 10.7, -4.1);
   mesh.scale.set(1.5, 1, 1);
+  const loadingFunction = () => {
+    //create a spinner using tailwind
+    if (loading) {
+      return (
+        <div className="flex items-center flex-col justify-center">
+          <div className="h-20 w-20 animate-spin rounded-full border-b-4 border-[#0E19EE]"></div>
+          <h1 className=" text-xl m-5">Loading...</h1>
+        </div>
+      );
+    }
+  };
 
   //when i scroll in use the useFrame hook to increase the godRaysExposure
 
@@ -66,15 +78,16 @@ const Home = () => {
       </Head>
 
       <main className="flex justify-center items-center w-full h-full">
-        <Canvas className=" flex justify-center items-center w-full h-full  ">
-          {/* <ambientLight intensity={0.5} /> */}
+        <Suspense fallback={loadingFunction()}>
+          <Canvas className=" flex justify-center items-center w-full h-full  ">
+            {/* <ambientLight intensity={0.5} /> */}
 
-          <directionalLight position={[-2, -5, -2]} intensity={1} />
-          <pointLight position={[50, 70, -90]} />
-          <Suspense fallback={null}>
+            <directionalLight position={[-2, -5, -2]} intensity={1} />
+            <pointLight position={[50, 70, -90]} />
+
             <FloatingIslandSeen />
-          </Suspense>
-        </Canvas>
+          </Canvas>
+        </Suspense>
       </main>
     </div>
   );
