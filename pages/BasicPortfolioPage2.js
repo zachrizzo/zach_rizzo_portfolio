@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, Suspense } from "react";
 import BasicProjectComponent from "../components/BasicProjectComponent";
 import MainButton from "../components/MainButton";
 import ParticleText from "../components/Particletext";
-import IphoneScroll from "../components/threejsPhones/Three_IphoneScroll";
+// import IphoneScroll from "../components/threejsPhones/Three_IphoneScroll";
 import { motion } from "framer-motion";
 import IntroNameComponent from "../components/IntroNameComonent";
 import AboutMe from "../components/AboutMe";
@@ -79,7 +79,6 @@ export default function BasicPortfolioPage() {
       setUrls: setCrabRobotUrl,
       project: "crabRobot",
     });
-    console.log("useful robot", amaAppUrl);
   }, []);
 
   const reactRef = useRef(null);
@@ -104,37 +103,37 @@ export default function BasicPortfolioPage() {
     return particles;
   };
 
-  const listInnerRef = useRef();
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      console.log(entry);
-      // if (entry.isIntersecting) {
-      setIphoneScrollInView(entry.isIntersecting);
-      if (entry.isIntersecting == true) {
-        setIphoneScrollPages(8);
-      } else {
-        setIphoneScrollPages(0);
-      }
-      // }
-      // if (entry.isIntersecting == false) {
-      //   setIphoneScrollInView(false)
-      // }
-    });
+  // const listInnerRef = useRef();
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver((entries) => {
+  //     const entry = entries[0];
+  //     console.log(entry);
+  //     // if (entry.isIntersecting) {
+  //     setIphoneScrollInView(entry.isIntersecting);
+  //     if (entry.isIntersecting == true) {
+  //       setIphoneScrollPages(8);
+  //     } else {
+  //       setIphoneScrollPages(0);
+  //     }
+  //     // }
+  //     // if (entry.isIntersecting == false) {
+  //     //   setIphoneScrollInView(false)
+  //     // }
+  //   });
 
-    if (listInnerRef.current) {
-      observer.observe(listInnerRef.current);
-    }
-  }, []);
+  //   if (listInnerRef.current) {
+  //     observer.observe(listInnerRef.current);
+  //   }
+  // }, []);
 
-  const onScroll = () => {
-    if (listInnerRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-      if (scrollTop + clientHeight === scrollHeight) {
-        console.log("half");
-      }
-    }
-  };
+  // const onScroll = () => {
+  //   if (listInnerRef.current) {
+  //     const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+  //     if (scrollTop + clientHeight === scrollHeight) {
+  //       console.log("half");
+  //     }
+  //   }
+  // };
   const loadingFunction = () => {
     //create a spinner using tailwind
     if (loading) {
@@ -180,6 +179,7 @@ export default function BasicPortfolioPage() {
             }
             listOfVideoIndexes={[9]}
             buttonText={"View Project"}
+            imageButtons={true}
           />
 
           <BasicProjectComponent
@@ -193,6 +193,7 @@ export default function BasicPortfolioPage() {
             listOfVideoIndexes={[7]}
             buttonText={"View Project"}
             projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
+            imageButtons={true}
           />
 
           {/* <div
@@ -215,13 +216,13 @@ export default function BasicPortfolioPage() {
               FlowTeam
             </h3>
             <div
-              ref={listInnerRef}
+              // ref={listInnerRef}
               className=" flex justify-center items-center w-full md:h-[70%] h-[45%]"
             >
-              <IphoneScroll
+              {/* <IphoneScroll
                 pages={iphoneScrollPages}
                 enabled={iphoneScrollInView}
-              />
+              /> */}
             </div>
             <p className="md:text-lg md: mx-5 text-sm text-[#e9e9e9]  mt-[20px] text-center ">
               Flow Team is a mobile app that was created to help companies
@@ -262,6 +263,7 @@ export default function BasicPortfolioPage() {
             listOfVideoIndexes={[0]}
             projectLink={"https://github.com/zachrizzo/UsefulRobot"}
             buttonText={"View Project"}
+            imageButtons={true}
           />
 
           <BasicProjectComponent
@@ -274,6 +276,7 @@ export default function BasicPortfolioPage() {
             }
             listOfVideoIndexes={[0, 1]}
             buttonText={"View Project"}
+            imageButtons={true}
           />
         </section>
 
@@ -328,6 +331,7 @@ export default function BasicPortfolioPage() {
           <BasicProjectComponent
             images={[]}
             title={"Fax Automation"}
+            HIPPA={true}
             videosVertical={[]}
             videosHorizontal={[]}
             description={
@@ -343,6 +347,7 @@ export default function BasicPortfolioPage() {
             images={[]}
             videosVertical={[]}
             videosHorizontal={[]}
+            HIPPA={true}
             title={"Email Automation"}
             description={
               "With 15,000 patients at American Medical Associates, creating an email campaign was nearly impossible with no way to access all of their email address. As a solution, I developed a Python bot that went through the EMR and pulled each email address from the 15,000 patients and put it into a spreadsheets using Numpy to enable marketing campaigns."

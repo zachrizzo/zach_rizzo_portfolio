@@ -51,6 +51,7 @@ export default function FloatingIslandSeen() {
   const [mainTextOneRotation, setMainTextOneRotation] = useState([
     0, -0.35, -0.05,
   ]);
+  const [userZoomedIntoPortal, setUserZoomedIntoPortal] = useState(false);
 
   const router = useRouter();
 
@@ -93,6 +94,11 @@ export default function FloatingIslandSeen() {
     setStartingCameraX(cameraRef.current.position.x);
     setStartingCameraY(cameraRef.current.position.y);
   }, []);
+  useEffect(() => {
+    if (userZoomedIntoPortal) {
+      router.replace("/BasicPortfolioPage2");
+    }
+  }, [userZoomedIntoPortal]);
 
   useFrame(({ clock }) => {
     var middleOfScrollX = (maxScrollX - minScrollX) / 2;
@@ -125,9 +131,7 @@ export default function FloatingIslandSeen() {
         await new Promise((r) => setTimeout(r, 4000));
       };
       IncreaseGodRays().then(() => {
-        //console.log("done");
-
-        router.replace("/BasicPortfolioPage2");
+        setUserZoomedIntoPortal(true);
       });
     } else {
       //set good rays back to normal
