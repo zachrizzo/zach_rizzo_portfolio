@@ -21,6 +21,7 @@ export default function BasicProjectComponent({
   videosVertical,
   carousel,
   HIPPA,
+  displayImage,
 }) {
   const [text, count] = useTypewriter({
     words: description,
@@ -30,24 +31,6 @@ export default function BasicProjectComponent({
   });
   const [showImages, setShowImages] = useState(false);
   const videoElement = useRef(null);
-  const [orientation, setOrientation] = useState("landscape");
-  useEffect(() => {
-    function handleResize() {
-      if (window.innerHeight > window.innerWidth) {
-        setOrientation("portrait");
-      } else {
-        setOrientation("landscape");
-      }
-      // console.log(`Video orientation: ${orientation}`);
-      // console.log(`Window hight: ${window.innerHeight}`);
-      // console.log(`Window width: ${window.innerWidth}`);
-    }
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   // make a carousel of images
   //   const allImages = images.map((image, index) => {
@@ -196,9 +179,9 @@ export default function BasicProjectComponent({
             {title}
           </h3>
         </div>
-        {/* images */}
+        {displayImage}
         {HIPPA && (
-          <h4 className="text-white my-10 text-lgmd:text-xl flex flex-col italic ">
+          <h4 className="text-white my-10 text-lg md:text-xl flex flex-col italic ">
             <span className="underline text-xl md:text-2xl text-red-500">
               HIPPA
             </span>{" "}
@@ -206,6 +189,7 @@ export default function BasicProjectComponent({
             Information
           </h4>
         )}
+
         {imageButtons && (
           <div className=" my-10">
             <MainButton

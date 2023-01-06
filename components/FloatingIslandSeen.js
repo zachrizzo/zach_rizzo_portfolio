@@ -96,7 +96,7 @@ export default function FloatingIslandSeen() {
   }, []);
   useEffect(() => {
     if (userZoomedIntoPortal) {
-      router.replace("/BasicPortfolioPage2");
+      router.route("/BasicPortfolioPage2");
     }
   }, [userZoomedIntoPortal]);
 
@@ -130,9 +130,10 @@ export default function FloatingIslandSeen() {
         }
         await new Promise((r) => setTimeout(r, 4000));
       };
-      IncreaseGodRays().then(() => {
-        setUserZoomedIntoPortal(true);
-      });
+      router.push("/BasicPortfolioPage2");
+      // IncreaseGodRays().then(() => {
+      //   setUserZoomedIntoPortal(true);
+      // });
     } else {
       //set good rays back to normal
       setGodRaysExposure(0.3);

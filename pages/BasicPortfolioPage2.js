@@ -50,7 +50,7 @@ export default function BasicPortfolioPage() {
   const [companyDbB, setCompanyDbB] = useState(null);
   const [iphoneScrollInView, setIphoneScrollInView] = useState(false);
   const [iphoneScrollPages, setIphoneScrollPages] = useState(0);
-  const [amaAppUrl, setAmaAppUrl] = useState(null);
+  const [amaAppUrl, setAmaAppUrl] = useState({});
   const [amaWebsiteUrl, setAmaWebsiteUrl] = useState(null);
   const [flowTeamUrl, setFlowTeamUrl] = useState(null);
   const [useFulRobotUrl, setUseFulRobotUrl] = useState(null);
@@ -102,6 +102,19 @@ export default function BasicPortfolioPage() {
     }
     return particles;
   };
+  // useEffect(() => {
+  //   if (amaWebsiteUrl) {
+  //     //make object map
+  //     amaWebsiteUrl.map((url) => {
+  //       console.log(url.url);
+  //     });
+  //   }
+  //   // return (
+  //   //   <div className="w-full flex flex-col justify-center items-center h-[45%]">
+  //   //     <img className="rounded-3xl" alt="" src={url} />
+  //   //   </div>
+  //   // );
+  // }, [amaWebsiteUrl]);
 
   // const listInnerRef = useRef();
   // useEffect(() => {
@@ -155,7 +168,7 @@ export default function BasicPortfolioPage() {
 
         {/* if not on desk top dont show particle text */}
         <div className=" hidden md:block">{/* <ParticleText /> */}</div>
-        <div className="my-[50px] h-screen">
+        <div className="my-[50px] h-[70%] md:h-[70%]">
           <AboutMe />
         </div>
 
@@ -180,6 +193,17 @@ export default function BasicPortfolioPage() {
             listOfVideoIndexes={[9]}
             buttonText={"View Project"}
             imageButtons={true}
+            // displayImage={
+            //   amaAppUrl
+            //     ? amaAppUrl[0].map((url) => {
+            //         return (
+            //           <div className="w-full flex flex-col justify-center items-center h-[45%]">
+            //             <img className="rounded-3xl" alt="" src={url} />
+            //           </div>
+            //         );
+            //       })
+            //     : null
+            // }
           />
 
           <BasicProjectComponent
@@ -211,19 +235,35 @@ export default function BasicPortfolioPage() {
           </div>
         </div> */}
           {/* <div className=" h-[50px] mt-[50px] w-full"></div> */}
-          <div className=" h-screen flex flex-col justify-center items-center w-full snap-center">
+          <BasicProjectComponent
+            videosVertical={[]}
+            videosHorizontal={[]}
+            images={flowTeamUrl}
+            title={"Flow Team"}
+            description={
+              "Flow Team is a mobile app that was created to help companies manage teams with ease. Flow Team has many features some of them including time tracking for employees using Geo location, the ability to create multiple teams and shared to-do lists between them, messaging capabilities similar to Slack&#174; that allow for multiple channels and teams, and more. This app using React Native and Firebase."
+            }
+            listOfVideoIndexes={[8]}
+            buttonText={"View Project"}
+            projectLink={
+              "https://github.com/zachrizzo/team_Flow_productiviity_app_v3"
+            }
+            imageButtons={true}
+          />
+
+          {/* <div className=" h-screen flex flex-col justify-center items-center w-full snap-center">
             <h3 className=" top-1 uppercase tracking-[20px] text-gray-500 text-2xl">
               FlowTeam
             </h3>
             <div
               // ref={listInnerRef}
               className=" flex justify-center items-center w-full md:h-[70%] h-[45%]"
-            >
-              {/* <IphoneScroll
+            > */}
+          {/* <IphoneScroll
                 pages={iphoneScrollPages}
                 enabled={iphoneScrollInView}
               /> */}
-            </div>
+          {/* </div>
             <p className="md:text-lg md: mx-5 text-sm text-[#e9e9e9]  mt-[20px] text-center ">
               Flow Team is a mobile app that was created to help companies
               manage teams with ease. Flow Team has many features some of them
@@ -245,7 +285,7 @@ export default function BasicPortfolioPage() {
                 }}
               />
             </div>
-          </div>
+          </div> */}
         </section>
 
         <section id={"robots"} ref={RoboticsRef} className=" text-center">
@@ -323,7 +363,7 @@ export default function BasicPortfolioPage() {
         <section
           id="automation"
           ref={automationRef}
-          className=" text-center flex justify-center items-center flex-col snap-center h-screen"
+          className=" text-center flex justify-center items-center flex-col snap-center mb-[50px]"
         >
           <h4 className="mb-20 text-[#a631f0] text-3xl md:text-5xl font-bold">
             Automation
@@ -342,7 +382,7 @@ export default function BasicPortfolioPage() {
             buttonText={"View Project"}
           />
         </section>
-        <section className=" text-center flex justify-center items-center flex-col snap-center h-screen">
+        <section className=" text-center flex justify-center items-center flex-col snap-center mb-[20px]">
           <BasicProjectComponent
             images={[]}
             videosVertical={[]}
