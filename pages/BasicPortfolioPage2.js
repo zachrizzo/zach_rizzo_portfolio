@@ -168,7 +168,7 @@ export default function BasicPortfolioPage() {
 
         {/* if not on desk top dont show particle text */}
         <div className=" hidden md:block">{/* <ParticleText /> */}</div>
-        <div className="my-[50px] h-[70%] md:h-[70%]">
+        <div className="my-[50px] h-[85%] md:h-[70%]">
           <AboutMe />
         </div>
 
