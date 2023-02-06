@@ -5,11 +5,15 @@ import MainButton from "./MainButton";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { HomeIcon } from "@heroicons/react/24/solid";
+import { sendToDb } from "../firebase";
 
 export default function IntroNameComponent({
   reactRef,
   RoboticsRef,
   automationRef,
+  NotifyDbOnClick,
+  lat,
+  lng,
 }) {
   const router = useRouter();
   const [text, count] = useTypewriter({
@@ -43,17 +47,26 @@ export default function IntroNameComponent({
           buttonText={"React"}
           onClick={() => {
             router.push("/BasicPortfolioPage2#react");
+            if (NotifyDbOnClick) {
+              sendToDb({ project_button: "React", lat: lat, lng: lng });
+            }
           }}
         />
         <MainButton
           buttonText={"Robotics"}
           onClick={() => {
             router.push("/BasicPortfolioPage2#robots");
+            if (NotifyDbOnClick) {
+              sendToDb({ project_button: "Robotics", lat: lat, lng: lng });
+            }
           }}
         />
         <MainButton
           onClick={() => {
             router.push("/BasicPortfolioPage2#automation");
+            if (NotifyDbOnClick) {
+              sendToDb({ project_button: "Automation", lat: lat, lng: lng });
+            }
           }}
           buttonText={"Automation"}
         />
@@ -61,12 +74,18 @@ export default function IntroNameComponent({
       <button
         onClick={() => {
           router.push("/");
+          if (NotifyDbOnClick) {
+            sendToDb({ project_button: "Home", lat: lat, lng: lng });
+          }
         }}
         className="cursor-pointer p-3 -p-3 rounded-full bg-[#ffffff] z-20"
       >
         <HomeIcon
           onClick={() => {
             router.push("/");
+            if (NotifyDbOnClick) {
+              sendToDb({ project_button: "Home", lat: lat, lng: lng });
+            }
           }}
           className=" cursor-pointer h-6 w-6 text-blue-500"
         />

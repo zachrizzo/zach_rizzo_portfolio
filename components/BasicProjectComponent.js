@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Carousel from "./carosel";
 
 import NextImage from "next/image";
+import { sendToDb } from "../firebase";
 
 export default function BasicProjectComponent({
   images,
@@ -22,6 +23,9 @@ export default function BasicProjectComponent({
   carousel,
   HIPPA,
   displayImage,
+  lat,
+  lng,
+  NotifyDbOnClick,
 }) {
   const [text, count] = useTypewriter({
     words: description,
@@ -195,6 +199,13 @@ export default function BasicProjectComponent({
             <MainButton
               onClick={() => {
                 setShowImages(!showImages);
+                if (NotifyDbOnClick) {
+                  sendToDb({
+                    project_button: title + "-showImages",
+                    lat: lat,
+                    lng: lng,
+                  });
+                }
               }}
               buttonText={showImages ? "Hide Images" : "Show Images"}
             />
@@ -366,6 +377,13 @@ export default function BasicProjectComponent({
               onClick={() => {
                 //send the user to link in a new tab
                 window.open(projectLink, "_blank");
+                if (NotifyDbOnClick) {
+                  sendToDb({
+                    project_button: title + "-code",
+                    lat: lat,
+                    lng: lng,
+                  });
+                }
               }}
             />
           )}

@@ -6,7 +6,7 @@ import ParticleText from "../components/Particletext";
 import { motion } from "framer-motion";
 import IntroNameComponent from "../components/IntroNameComonent";
 import AboutMe from "../components/AboutMe";
-import { getImageAndVideos } from "../firebase";
+import { getImageAndVideos, sendToDb } from "../firebase";
 export async function getStaticProps() {
   // var amaAppUrl = null;
   // var amaWebsiteUrl = null;
@@ -56,6 +56,9 @@ export default function BasicPortfolioPage() {
   const [useFulRobotUrl, setUseFulRobotUrl] = useState(null);
   const [crabRobotUrl, setCrabRobotUrl] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
+  const [notifyDbOnClick, setNotifyDbOnClick] = useState(true);
 
   useEffect(() => {
     // get the images and videos from firebase
@@ -79,6 +82,21 @@ export default function BasicPortfolioPage() {
       setUrls: setCrabRobotUrl,
       project: "crabRobot",
     });
+  }, []);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+  });
+  useEffect(() => {
+    if (notifyDbOnClick) {
+      sendToDb({
+        lat: lat,
+        lng: long,
+        project_button: "porfolio_page",
+      });
+    }
   }, []);
 
   const reactRef = useRef(null);
@@ -163,7 +181,11 @@ export default function BasicPortfolioPage() {
     <Suspense fallback={loadingFunction()}>
       <div className="  overflow-x-hidden  bg-[rgb(36,36,36)]  w-full  h-screen z-0 ">
         <section id="hero" className="w-full snap-center">
-          <IntroNameComponent />
+          <IntroNameComponent
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
+          />
         </section>
 
         {/* if not on desk top dont show particle text */}
@@ -193,6 +215,9 @@ export default function BasicPortfolioPage() {
             listOfVideoIndexes={[9]}
             buttonText={"View Project"}
             imageButtons={true}
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
             // displayImage={
             //   amaAppUrl
             //     ? amaAppUrl[0].map((url) => {
@@ -218,6 +243,9 @@ export default function BasicPortfolioPage() {
             buttonText={"View Project"}
             projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
             imageButtons={true}
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
           />
 
           {/* <div
@@ -249,6 +277,9 @@ export default function BasicPortfolioPage() {
               "https://github.com/zachrizzo/team_Flow_productiviity_app_v3"
             }
             imageButtons={true}
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
           />
 
           {/* <div className=" h-screen flex flex-col justify-center items-center w-full snap-center">
@@ -304,6 +335,9 @@ export default function BasicPortfolioPage() {
             projectLink={"https://github.com/zachrizzo/UsefulRobot"}
             buttonText={"View Project"}
             imageButtons={true}
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
           />
 
           <BasicProjectComponent
@@ -317,6 +351,9 @@ export default function BasicPortfolioPage() {
             listOfVideoIndexes={[0, 1]}
             buttonText={"View Project"}
             imageButtons={true}
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
           />
         </section>
 
@@ -380,6 +417,9 @@ export default function BasicPortfolioPage() {
             listOfVideoIndexes={[]}
             projectLink={"https://github.com/zachrizzo/Read_ama_fax"}
             buttonText={"View Project"}
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
           />
         </section>
         <section className=" text-center flex justify-center items-center flex-col snap-center mb-[20px]">
@@ -395,6 +435,9 @@ export default function BasicPortfolioPage() {
             listOfVideoIndexes={[]}
             projectLink={"https://github.com/zachrizzo/Geat_allPatient_emails"}
             buttonText={"View Project"}
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
           />
         </section>
       </div>

@@ -2,7 +2,15 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  serverTimestamp,
+  setDoc,
+  doc,
+  addDoc,
+} from "firebase/firestore";
 import {
   getStorage,
   ref,
@@ -56,5 +64,15 @@ export async function getImageAndVideos({ setUrls, project }) {
       });
     });
     setUrls(urls);
+  });
+}
+
+//send To Db when user clicks on a button
+export async function sendToDb({ project_button, lat, lng }) {
+  await addDoc(collection(db, "usage"), {
+    project_button: project_button,
+    timestamp: serverTimestamp(),
+    lat: lat,
+    lng: lng,
   });
 }

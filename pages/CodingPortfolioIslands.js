@@ -35,6 +35,12 @@ import CustomIslandComponent from "../components/CustomIslandComponent";
 import ThreeJSImageAndTextComponent from "../components/ThreeJSImageAndTextComponent";
 
 export default function CodingPortfolioIslands() {
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+    });
+  });
   return (
     <div className="flex flex-col w-full h-[100vh] items-center justify-center py-2">
       <main className="flex justify-center items-center w-full h-full">
