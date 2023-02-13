@@ -27,6 +27,8 @@ import {
   HueSaturation,
 } from "@react-three/postprocessing";
 import { useFrame } from "@react-three/fiber";
+import { RomanGear } from "../components/romanGear";
+import { Roman_centurion_armor } from "../components/roman_centurion_armor";
 
 export default function FloatingIslandSeen() {
   const cameraRef = useRef();
@@ -181,11 +183,13 @@ export default function FloatingIslandSeen() {
             position={[1.19, 10.85, -4.45]}
             target-position={[0, 0, -1]}
           />
-
+          {/* <Roman_centurion_armor /> */}
           <PortalComponent />
           <FloatingIsland />
           <IslandTrees />
           <IslandRocks />
+          <RomanGear />
+
           <Grass />
           <SceneParticles />
           <Text
