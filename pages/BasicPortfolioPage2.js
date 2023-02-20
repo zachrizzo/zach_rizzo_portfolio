@@ -67,6 +67,7 @@ export default function BasicPortfolioPage() {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [notifyDbOnClick, setNotifyDbOnClick] = useState(true);
+  const [isPhone, setIsPhone] = useState(true);
 
   const router = useRouter();
 
@@ -78,7 +79,7 @@ export default function BasicPortfolioPage() {
   //   curl: { value: 0.33, min: 0.01, max: 0.5, step: 0.01 },
   // });
   const props = {
-    focus: 4.77,
+    focus: isPhone ? 9 : 4.77,
     speed: 0.1,
     aperture: 3.9,
     fov: 44,
@@ -121,6 +122,13 @@ export default function BasicPortfolioPage() {
         lng: long,
         project_button: "porfolio_page",
       });
+    }
+  }, []);
+
+  useEffect(() => {
+    // check if the user is on a phone
+    if (window.innerWidth < 600) {
+      setIsPhone(true);
     }
   }, []);
 
@@ -207,7 +215,7 @@ export default function BasicPortfolioPage() {
       <div className="  overflow-x-hidden  bg-[rgb(36,36,36)]  w-full  h-screen z-0 ">
         <Canvas
           className=" justify-center h-full items-center flex"
-          camera={{ position: [0, 0, 5.5], fov: 25 }}
+          camera={{ position: isPhone ? [0, 0, 10] : [0, 0, 5.5], fov: 25 }}
         >
           <OrbitControls
             makeDefault
@@ -215,6 +223,7 @@ export default function BasicPortfolioPage() {
             autoRotateSpeed={0.5}
             zoomSpeed={0.1}
             enableZoom={false}
+            enablePan={isPhone ? false : true}
           />
 
           <CameraShake
@@ -299,7 +308,7 @@ export default function BasicPortfolioPage() {
             lat={lat}
             lng={long}
           />
-          <BasicProjectComponent2
+          {/* <BasicProjectComponent2
             videosVertical={[]}
             videosHorizontal={[]}
             images={amaWebsiteUrl}
@@ -314,7 +323,7 @@ export default function BasicPortfolioPage() {
             NotifyDbOnClick={notifyDbOnClick}
             lat={lat}
             lng={long}
-          />
+          /> */}
 
           {/* <div
           
