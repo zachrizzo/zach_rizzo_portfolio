@@ -3,9 +3,15 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackGroundCircles from "./BackGroundCircles";
 import MainButton from "./MainButton";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import { sendToDb } from "../firebase";
+import { Canvas } from "@react-three/fiber";
+import { CameraShake, Html, OrbitControls } from "@react-three/drei";
+import { Particles } from "./ParticlesNoise";
+import { useControls } from "leva";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function IntroNameComponent({
   reactRef,
@@ -14,8 +20,9 @@ export default function IntroNameComponent({
   NotifyDbOnClick,
   lat,
   lng,
+  router,
 }) {
-  const router = useRouter();
+  // const router = useRouter();
   const [text, count] = useTypewriter({
     words: [
       "Hi, My Name is Zach",
@@ -26,6 +33,13 @@ export default function IntroNameComponent({
     typeSpeed: 50,
     delaySpeed: 3000,
   });
+  // const props = useControls({
+  //   focus: { value: 5.1, min: 3, max: 7, step: 0.01 },
+  //   speed: { value: 100, min: 0.1, max: 100, step: 0.1 },
+  //   aperture: { value: 1.8, min: 1, max: 5.6, step: 0.1 },
+  //   fov: { value: 50, min: 0, max: 200 },
+  //   curl: { value: 0.25, min: 0.01, max: 0.5, step: 0.01 },
+  // });
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -46,10 +60,10 @@ export default function IntroNameComponent({
         <MainButton
           buttonText={"React"}
           onClick={() => {
-            router.push("/BasicPortfolioPage2#react");
             if (NotifyDbOnClick) {
               sendToDb({ project_button: "React", lat: lat, lng: lng });
             }
+            router.push("/BasicPortfolioPage2#react");
           }}
         />
         <MainButton
@@ -57,7 +71,11 @@ export default function IntroNameComponent({
           onClick={() => {
             router.push("/BasicPortfolioPage2#robots");
             if (NotifyDbOnClick) {
-              sendToDb({ project_button: "Robotics", lat: lat, lng: lng });
+              sendToDb({
+                project_button: "Robotics",
+                lat: lat,
+                lng: lng,
+              });
             }
           }}
         />
@@ -65,7 +83,11 @@ export default function IntroNameComponent({
           onClick={() => {
             router.push("/BasicPortfolioPage2#automation");
             if (NotifyDbOnClick) {
-              sendToDb({ project_button: "Automation", lat: lat, lng: lng });
+              sendToDb({
+                project_button: "Automation",
+                lat: lat,
+                lng: lng,
+              });
             }
           }}
           buttonText={"Automation"}

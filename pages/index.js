@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { Canvas } from "@react-three/fiber";
 

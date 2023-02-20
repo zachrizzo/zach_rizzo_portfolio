@@ -7,8 +7,13 @@ import Carousel from "./carosel";
 
 import NextImage from "next/image";
 import { sendToDb } from "../firebase";
+import ShowVideosThreeJs from "./ShowVideosThreeJs";
+import { Particles } from "./ParticlesNoise";
+import { useControls } from "leva";
+import { Canvas } from "@react-three/fiber";
+import { CameraShake, Html, OrbitControls } from "@react-three/drei";
 
-export default function BasicProjectComponent({
+export default function BasicProjectComponent2({
   images,
   title,
   description,
@@ -26,7 +31,6 @@ export default function BasicProjectComponent({
   lat,
   lng,
   NotifyDbOnClick,
-  
 }) {
   const [text, count] = useTypewriter({
     words: description,
@@ -175,6 +179,14 @@ export default function BasicProjectComponent({
   //   );
   // }
 
+  // const props = useControls({
+  //   focus: { value: 5.1, min: 3, max: 7, step: 0.01 },
+  //   speed: { value: 100, min: 0.1, max: 100, step: 0.1 },
+  //   aperture: { value: 1.8, min: 1, max: 5.6, step: 0.1 },
+  //   fov: { value: 50, min: 0, max: 200 },
+  //   curl: { value: 0.25, min: 0.01, max: 0.5, step: 0.01 },
+  // });
+
   return (
     <div className=" text-center  mb-[20px] flex  justify-center w-full flex-col ">
       <div className=" w-full justify-center items-center grid-rows-4 flex-col flex">
@@ -212,158 +224,29 @@ export default function BasicProjectComponent({
             />
           </div>
         )}
-        {showImages && (
-          <div className=" flex-col my-10 flex items-center justify-center h-[45%] 2xl:container 2xl:mx-auto 2xl:px-0 py-2 px-5   ">
-            {carousel && (
-              <Carousel
-                listOfVideoIndexes={listOfVideoIndexes}
-                images={images}
+        <div className=" w-full h-[900px]">
+          {showImages && (
+            <Canvas camera={{ position: [0, 0, 5], fov: 25 }}>
+              <OrbitControls
+                makeDefault
+                autoRotate
+                autoRotateSpeed={0.5}
+                zoomSpeed={0.1}
               />
-            )}
-
-            {!images
-              ? null
-              : images.map((images, index) => {
-                  //detect if the image is landscape or portrait
-                  //get image dimensions
-                  var img;
-                  img = new Image();
-                  img.src = images.url;
-                  var width = img.width;
-                  var height = img.height;
-
-                  if (
-                    images.metadata.contentType != "video/mp4" &&
-                    images.metadata.contentType != "video/quicktime"
-                  ) {
-                    return (
-                      <div
-                        key={index}
-                        className="  relative rounded-3xl my-5 flex-col flex justify-center items-center"
-                      >
-                        {width < height && (
-                          <a
-                            //open image in new tab
-
-                            href={images.url}
-                            target="_blank"
-                            className=" sm:w-[30%] rounded-3xl"
-                            style={{
-                              backgroundImage: `url(${images.url || ""})`,
-                            }}
-                          >
-                            <img
-                              src={images.url || ""}
-                              alt={images.url}
-                              className="w-full h-full rounded-2xl  "
-                            />
-                          </a>
-                        )}
-
-                        {width > height && (
-                          <a
-                            //open image in new tab
-
-                            href={images.url}
-                            target="_blank"
-                            className="sm:w-[80%]  rounded-3xl"
-                            style={{
-                              backgroundImage: `url(${images.url || ""})`,
-                            }}
-                          >
-                            <img
-                              src={images.url || ""}
-                              alt={images.url}
-                              className="w-full h-full rounded-2xl  "
-                            />
-                          </a>
-                        )}
-                        {/* <a href={images.url} target="_blank" className="">
-                        <h3 className="text-white my-6  mx-auto text-xs">
-                          {images.url}
-                        </h3>
-                      </a> */}
-                      </div>
-                    );
-                  } else {
-                    //get video dimensions
-                    var video;
-                    var videoWidth = 0;
-                    var videoHeight = 1;
-                    {
-                      /* video = document.createElement("video");
-                    video.src = images.url;
-
-                    video.onloadedmetadata = function () {
-                      videoWidth = video.videoWidth;
-                      videoHeight = video.videoHeight;
-                      console.log("videoWidth", videoWidth);
-                      console.log("videoHeight", videoHeight);
-                    }; */
-                    }
-
-                    return (
-                      <div
-                        key={index}
-                        className="rounded-3xl my-20 flex-col  flex justify-center items-center"
-                      >
-                        {videoWidth < videoHeight && (
-                          <div
-                            className=" sm:w-[30%]  "
-                            style={{
-                              backgroundImage: `url(${images.url || ""})`,
-                            }}
-                          >
-                            <video
-                              // src={images || ""}
-                              // alt={images}
-                              className=" my-15 rounded-3xl"
-                              controls
-                            >
-                              <source
-                                ref={videoElement}
-                                src={images.url || ""}
-                                type="video/mp4"
-                              />
-                            </video>
-                          </div>
-                        )}
-
-                        {videoHeight < videoWidth && (
-                          <div
-                            className=" sm:w-[80%]  "
-                            style={{
-                              backgroundImage: `url(${images.url || ""})`,
-                            }}
-                          >
-                            <video
-                              // src={images || ""}
-                              // alt={images}
-                              className=" my-15 rounded-3xl"
-                              controls
-                            >
-                              <source
-                                ref={videoElement}
-                                src={images.url || ""}
-                                type="video/mp4"
-                              />
-                            </video>
-                          </div>
-                        )}
-                        {/* <a
-                        href={images.url}
-                        className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-blue-800/75 z-10"
-                      >
-                        <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                          {images.url}
-                        </h3>
-                      </a> */}
-                      </div>
-                    );
-                  }
-                })}
-          </div>
-        )}
+              <CameraShake
+                yawFrequency={1}
+                maxYaw={0.05}
+                pitchFrequency={1}
+                maxPitch={0.05}
+                rollFrequency={0.5}
+                maxRoll={0.5}
+                intensity={0.2}
+              />
+              <Html></Html>
+              <Particles {...props} />
+            </Canvas>
+          )}
+        </div>
         {/* descrption */}
         <div className="mb-[30px] flex justify-center items-center  h-[40%]  w-[100%]">
           <p className=" mx-5 text-sm md:text-lg text-[#e9e9e9]  md:mt-[50px] text-center ">

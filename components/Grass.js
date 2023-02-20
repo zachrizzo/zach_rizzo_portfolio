@@ -2,6 +2,7 @@ import { useLoader } from "@react-three/fiber";
 import { useEffect } from "react";
 import { Color, DoubleSide } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import React from "react";
 
 export default function Grass() {
   // thanks to https://opengameart.org/content/64-billboard-grass-texture-and-mesh !

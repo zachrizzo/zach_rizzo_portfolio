@@ -56,6 +56,10 @@ export default function FloatingIslandSeen() {
   const [userZoomedIntoPortal, setUserZoomedIntoPortal] = useState(false);
 
   const router = useRouter();
+  const [amsRotation, setAmsRotation] = useState([1, 0, 0]);
+  const [amsPosition, setAmsPosition] = useState([0, 0.2, -0.2]);
+  var armRotation = [1, 0, 0];
+  var armPosition = [0, 0.2, -0.2];
 
   useEffect(() => {
     //get screen size
@@ -143,6 +147,29 @@ export default function FloatingIslandSeen() {
       setGodRaysDensity(0.97);
       setGodRaysWeight(0.6);
     }
+
+    //animate the armsPosition
+
+    // setAmsPosition([
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    // ]);
+    // setAmsRotation([
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    // ]);
+    // armPosition = [
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    // ];
+    // armRotation = [
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    //   0.2 * Math.sin(clock.getElapsedTime()),
+    // ];
   });
 
   return (
@@ -183,7 +210,10 @@ export default function FloatingIslandSeen() {
             position={[1.19, 10.85, -4.45]}
             target-position={[0, 0, -1]}
           />
-          {/* <Roman_centurion_armor /> */}
+          <Roman_centurion_armor
+            armsPosition={armPosition}
+            armsRotation={armRotation}
+          />
           <PortalComponent />
           <FloatingIsland />
           <IslandTrees />

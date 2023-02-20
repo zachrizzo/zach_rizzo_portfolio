@@ -12,6 +12,7 @@ import {
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { FillQuad } from "../FillQuad";
+import React from "react";
 
 const scene = new Scene();
 var target;

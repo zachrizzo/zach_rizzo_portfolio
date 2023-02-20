@@ -7,6 +7,14 @@ import { motion } from "framer-motion";
 import IntroNameComponent from "../components/IntroNameComonent";
 import AboutMe from "../components/AboutMe";
 import { getImageAndVideos, sendToDb } from "../firebase";
+import BasicProjectComponent2 from "../components/BasicProjectComponent2";
+import { Particles } from "../components/ParticlesNoise";
+import { useControls } from "leva";
+import { Canvas } from "@react-three/fiber";
+import { CameraShake, Html, OrbitControls } from "@react-three/drei";
+import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { useRouter } from "next/router";
+
 export async function getStaticProps() {
   // var amaAppUrl = null;
   // var amaWebsiteUrl = null;
@@ -59,6 +67,23 @@ export default function BasicPortfolioPage() {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [notifyDbOnClick, setNotifyDbOnClick] = useState(true);
+
+  const router = useRouter();
+
+  // const props = useControls({
+  //   focus: { value: 4.25, min: 3, max: 7, step: 0.01 },
+  //   speed: { value: 0.1, min: 0.1, max: 100, step: 0.1 },
+  //   aperture: { value: 4.1, min: 1, max: 5.6, step: 0.1 },
+  //   fov: { value: 44, min: 0, max: 200 },
+  //   curl: { value: 0.33, min: 0.01, max: 0.5, step: 0.01 },
+  // });
+  const props = {
+    focus: 4.77,
+    speed: 0.1,
+    aperture: 3.9,
+    fov: 44,
+    curl: 0.33,
+  };
 
   useEffect(() => {
     // get the images and videos from firebase
@@ -180,13 +205,40 @@ export default function BasicPortfolioPage() {
   return (
     <Suspense fallback={loadingFunction()}>
       <div className="  overflow-x-hidden  bg-[rgb(36,36,36)]  w-full  h-screen z-0 ">
-        <section id="hero" className="w-full snap-center">
-          <IntroNameComponent
-            NotifyDbOnClick={notifyDbOnClick}
-            lat={lat}
-            lng={long}
+        <Canvas
+          className=" justify-center h-full items-center flex"
+          camera={{ position: [0, 0, 5.5], fov: 25 }}
+        >
+          <OrbitControls
+            makeDefault
+            autoRotate
+            autoRotateSpeed={0.5}
+            zoomSpeed={0.1}
+            enableZoom={false}
           />
-        </section>
+
+          <CameraShake
+            yawFrequency={1}
+            maxYaw={0.05}
+            pitchFrequency={1}
+            maxPitch={0.05}
+            rollFrequency={0.5}
+            maxRoll={0.5}
+            intensity={0.2}
+          />
+          <Html className=" w-full  h-full justify-center flex items-center">
+            <section id="hero" className=" ">
+              <IntroNameComponent
+                NotifyDbOnClick={notifyDbOnClick}
+                lat={lat}
+                lng={long}
+                router={router}
+              />
+            </section>
+          </Html>
+
+          <Particles {...props} />
+        </Canvas>
 
         {/* if not on desk top dont show particle text */}
         <div className=" hidden md:block">{/* <ParticleText /> */}</div>
@@ -232,6 +284,22 @@ export default function BasicPortfolioPage() {
           />
 
           <BasicProjectComponent
+            videosVertical={[]}
+            videosHorizontal={[]}
+            images={amaWebsiteUrl}
+            title={"AMA Website"}
+            description={
+              "In collaboration with the AMA app, I developed a robust React-based website to handle the backend operations that the app could not. This website empowers employees and patients alike with a host of features, including post-visit text messaging, job application submission, new patient packet completion, department tracking and management, IT support ticket submission and resolution, and inventory management. I utilized the latest technologies such as React, Next.JS, TailWind, and Firebase to deliver a seamless and efficient user experience."
+            }
+            listOfVideoIndexes={[7]}
+            buttonText={"View Project"}
+            projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
+            imageButtons={true}
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
+          />
+          <BasicProjectComponent2
             videosVertical={[]}
             videosHorizontal={[]}
             images={amaWebsiteUrl}

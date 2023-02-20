@@ -10,7 +10,7 @@ Title: Roman Centurion Armor
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Roman_centurion_armor(props) {
+export function Roman_centurion_armor({ props, armsPosition, armsRotation }) {
   const { nodes, materials } = useGLTF("/roman_centurion_armor.glb");
   return (
     <group scale={2} position={[4, 7.8, -2.5]} {...props} dispose={null}>
@@ -33,7 +33,7 @@ export function Roman_centurion_armor(props) {
             material={materials.material}
           />
           {/* arms */}
-          <group rotation={[-0.5, 0, 0]} position={[0, 0, 0]}>
+          <group rotation={armsRotation} position={armsPosition}>
             <mesh
               geometry={nodes.defaultMaterial_4.geometry}
               material={materials.material}

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { EqualStencilFunc } from "three";
-
+import React from "react";
 const vertexShader = `
   varying vec2 vUv;
 
