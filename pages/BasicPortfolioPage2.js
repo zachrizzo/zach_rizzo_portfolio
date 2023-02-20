@@ -67,7 +67,7 @@ export default function BasicPortfolioPage() {
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
   const [notifyDbOnClick, setNotifyDbOnClick] = useState(true);
-  const [isPhone, setIsPhone] = useState(true);
+  const [isPhone, setIsPhone] = useState(false);
 
   const router = useRouter();
 
@@ -127,10 +127,12 @@ export default function BasicPortfolioPage() {
 
   useEffect(() => {
     // check if the user is on a phone
-    if (window.innerWidth < 600) {
+    if (window.innerWidth < 700) {
       setIsPhone(true);
+    } else {
+      setIsPhone(false);
     }
-  }, []);
+  });
 
   const reactRef = useRef(null);
   const RoboticsRef = useRef(null);
@@ -223,7 +225,7 @@ export default function BasicPortfolioPage() {
             autoRotateSpeed={0.5}
             zoomSpeed={0.1}
             enableZoom={false}
-            enablePan={isPhone ? false : true}
+            enableRotate={isPhone ? false : true}
           />
 
           <CameraShake
