@@ -9,13 +9,17 @@ import { Minimap } from "./MiniMap";
 import { proxy } from "valtio";
 
 function Item({
+  aspectRatio,
   state,
   index,
   position,
   scale,
+  screenWidth,
+  device,
   c = new THREE.Color(),
   ...props
 }) {
+  console.log(aspectRatio);
   const damp = THREE.MathUtils.damp;
   const ref = useRef();
   const scroll = useScroll();
@@ -51,27 +55,41 @@ function Item({
 
     ref.current.material.scale[1] = ref.current.scale.y = damp(
       ref.current.scale.y,
-      clicked === index ? 5 : 4 + y,
+      clicked === index
+        ? device == "desktop"
+          ? 5
+          : screenWidth / 3
+        : device == "desktop"
+        ? 4 + y
+        : 4,
       8,
       delta
     );
     ref.current.material.scale[0] = ref.current.scale.x = damp(
       ref.current.scale.x,
-      clicked === index ? 10 : scale[0],
+      clicked === index
+        ? device == "desktop"
+          ? 10
+          : screenWidth / 1.5
+        : scale[0],
       6,
       delta
     );
     if (clicked !== null && index < clicked)
       ref.current.position.x = damp(
         ref.current.position.x,
-        position[0] - 5,
+        aspectRatio[clicked] == "landscape"
+          ? (device = "desktop" ? position[0] - 2.5 : position[0] + 5)
+          : position[0] - 2,
         6,
         delta
       );
     if (clicked !== null && index > clicked)
       ref.current.position.x = damp(
         ref.current.position.x,
-        position[0] + 5,
+        aspectRatio[clicked] == "landscape"
+          ? (device = "desktop" ? position[0] + 2.5 : position[0] + 5)
+          : position[0] + 2,
         6,
         delta
       );
@@ -109,10 +127,15 @@ function Item({
 
 function Items({ w = 0.7, gap = 0.15, state1 }) {
   // const state1 = state;
-  const { urls } = useSnapshot(state1);
+  const { clicked, urls, aspectRatio } = useSnapshot(state1);
+  var device = "mobile";
+  // console.log(aspectRatio);
   // const urls = state1;
   // console.log(state1);
   const { width } = useThree((state) => state.viewport);
+  if (width > 8) {
+    device = "desktop";
+  }
   const xW = w + gap;
   return (
     <ScrollControls
@@ -123,7 +146,7 @@ function Items({ w = 0.7, gap = 0.15, state1 }) {
       <Minimap state={state1} />
       <Scroll>
         {
-          urls.map((url, i) => <Item   key={i} index={i} position={[i * xW, 0, .8]} scale={[w, 4, 1]} url={url} state={state1} />) /* prettier-ignore */
+          urls.map((url, i) => <Item   key={i} index={i} device={device} screenWidth={width} aspectRatio={aspectRatio}  position={[i * xW, 0, 0]} scale={[w, 4, 1]} url={url} state={state1} />) /* prettier-ignore */
         }
       </Scroll>
     </ScrollControls>

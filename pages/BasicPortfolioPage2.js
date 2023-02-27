@@ -56,20 +56,49 @@ export async function getStaticProps() {
 }
 
 const amaWeb = [
-  "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
-  "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
-  "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
+    aspectRatio: "landscape",
+  },
 ];
-
-const AMAwidths = [];
 
 const websiteProxy = proxy({
   clicked: null,
-  urls: amaWeb,
-
-  widths: AMAwidths,
+  urls: amaWeb.map((image) => image.url),
+  aspectRatio: amaWeb.map((image) => image.aspectRatio),
 });
-console.log(websiteProxy.widths);
 
 export default function BasicPortfolioPage() {
   const [activeStatus, setActiveStatus] = useState(null);
@@ -178,15 +207,6 @@ export default function BasicPortfolioPage() {
       setIsPhone(false);
     }
   });
-
-  const state = proxy({
-    clicked: null,
-    urls: ["../1.jpeg"],
-  });
-  // console.log("wdw", websiteProxy);
-  // console.log("zzz", state);
-  const s = useSnapshot(state);
-  // console.log("s", s);
 
   //if its a phone then  allow the user to scroll through the projects
 
@@ -319,7 +339,7 @@ export default function BasicPortfolioPage() {
             React & React Native
           </h4>
           <div className="flex w-full  h-[500px] flex-col justify-center items-center">
-            {websiteProxy != null && <ThreeJsCarousel urls={websiteProxy} />}
+            <ThreeJsCarousel urls={websiteProxy} />
           </div>
 
           <BasicProjectComponent
