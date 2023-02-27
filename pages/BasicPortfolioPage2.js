@@ -14,6 +14,8 @@ import { Canvas } from "@react-three/fiber";
 import { CameraShake, Html, OrbitControls } from "@react-three/drei";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { useRouter } from "next/router";
+import ThreeJsCarousel from "../components/ThreeJsCarousel";
+import { proxy, useSnapshot } from "valtio";
 
 export async function getStaticProps() {
   // var amaAppUrl = null;
@@ -53,15 +55,31 @@ export async function getStaticProps() {
   };
 }
 
+const amaWeb = [
+  "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
+  "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
+  "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
+];
+
+const AMAwidths = [];
+
+const websiteProxy = proxy({
+  clicked: null,
+  urls: amaWeb,
+
+  widths: AMAwidths,
+});
+console.log(websiteProxy.widths);
+
 export default function BasicPortfolioPage() {
   const [activeStatus, setActiveStatus] = useState(null);
   const [companyDbB, setCompanyDbB] = useState(null);
   const [iphoneScrollInView, setIphoneScrollInView] = useState(false);
   const [iphoneScrollPages, setIphoneScrollPages] = useState(0);
   const [amaAppUrl, setAmaAppUrl] = useState({});
-  const [amaWebsiteUrl, setAmaWebsiteUrl] = useState(null);
-  const [flowTeamUrl, setFlowTeamUrl] = useState(null);
-  const [useFulRobotUrl, setUseFulRobotUrl] = useState(null);
+  const [amaWebsiteUrl, setAmaWebsiteUrl] = useState([]);
+  const [flowTeamUrl, setFlowTeamUrl] = useState([]);
+  const [useFulRobotUrl, setUseFulRobotUrl] = useState([]);
   const [crabRobotUrl, setCrabRobotUrl] = useState(null);
   const [loading, setLoading] = useState(true);
   const [lat, setLat] = useState(0);
@@ -86,6 +104,32 @@ export default function BasicPortfolioPage() {
     curl: 0.33,
   };
 
+  // var websiteProxy = null;
+
+  // useEffect(() => {
+  //   if (amaWebsiteUrl.length != 0) {
+  //     console.log("websiteProxy", amaWebsiteUrl);
+  //     amaWebsiteUrl.map((url) => {
+  //       console.log("url", url.url);
+
+  //       websiteProxy = proxy({
+  //         clicked: null,
+  //         urls: url.url,
+  //       });
+  //     });
+  //   }
+  //   console.log("websiteProxy", websiteProxy);
+  // }, [amaWebsiteUrl]);
+
+  useEffect(() => {
+    if (amaWebsiteUrl.length != 0) {
+      console.log("websiteProxy", websiteProxy);
+      amaWebsiteUrl.map((url) => {
+        // console.log("url", url.url);
+      });
+    }
+  }, []);
+
   useEffect(() => {
     // get the images and videos from firebase
     getImageAndVideos({
@@ -95,6 +139,7 @@ export default function BasicPortfolioPage() {
     getImageAndVideos({
       setUrls: setAmaWebsiteUrl,
       project: "amaWebsite",
+      // urlsState: webS,
     });
     getImageAndVideos({
       setUrls: setFlowTeamUrl,
@@ -133,6 +178,17 @@ export default function BasicPortfolioPage() {
       setIsPhone(false);
     }
   });
+
+  const state = proxy({
+    clicked: null,
+    urls: ["../1.jpeg"],
+  });
+  // console.log("wdw", websiteProxy);
+  // console.log("zzz", state);
+  const s = useSnapshot(state);
+  // console.log("s", s);
+
+  //if its a phone then  allow the user to scroll through the projects
 
   const reactRef = useRef(null);
   const RoboticsRef = useRef(null);
@@ -262,6 +318,9 @@ export default function BasicPortfolioPage() {
           <h4 className="mb-2  text-[#a631f0] text-3xl md:text-5xl font-bold">
             React & React Native
           </h4>
+          <div className="flex w-full  h-[500px] flex-col justify-center items-center">
+            {websiteProxy != null && <ThreeJsCarousel urls={websiteProxy} />}
+          </div>
 
           <BasicProjectComponent
             className

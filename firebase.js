@@ -45,7 +45,7 @@ const db = getFirestore(app);
 //get files from firebase storage
 const storage = getStorage(app);
 
-export async function getImageAndVideos({ setUrls, project }) {
+export async function getImageAndVideos({ setUrls, project, urlsState }) {
   const listRef = ref(storage, `portfolio/${project}`);
   const urls = [];
   const list = await listAll(listRef);
@@ -60,10 +60,12 @@ export async function getImageAndVideos({ setUrls, project }) {
           url: url,
           metadata: metadata,
         });
+
         // console.log(metadata);
       });
     });
     setUrls(urls);
+    urlsState = urls;
   });
 }
 

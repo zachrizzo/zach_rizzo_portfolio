@@ -27,7 +27,8 @@
     "react-simple-typewriter": "^5.0.1",
     "react-use-refs": "^1.0.1",
     "three": "^0.142.0",
-    "v8": "^0.1.0"
+    "v8": "^0.1.0",
+    "valtio": "^1.10.3"
   },
   "devDependencies": {
     "@babel/plugin-syntax-jsx": "^7.18.6",
