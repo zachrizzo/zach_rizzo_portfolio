@@ -79,7 +79,9 @@ function Item({
       ref.current.position.x = damp(
         ref.current.position.x,
         aspectRatio[clicked] == "landscape"
-          ? (device = "desktop" ? position[0] - 2.5 : position[0] + 5)
+          ? device == "desktop"
+            ? position[0] - 5
+            : position[0] - 2.5
           : position[0] - 2,
         6,
         delta
@@ -88,7 +90,9 @@ function Item({
       ref.current.position.x = damp(
         ref.current.position.x,
         aspectRatio[clicked] == "landscape"
-          ? (device = "desktop" ? position[0] + 2.5 : position[0] + 5)
+          ? device == "desktop"
+            ? position[0] + 5
+            : position[0] + 2.5
           : position[0] + 2,
         6,
         delta
@@ -107,7 +111,7 @@ function Item({
       delta
     );
     ref.current.material.color.lerp(
-      c.set(hovered || clicked === index ? "#bbb" : "#aaa"),
+      c.set(hovered || clicked === index ? "#E2E2E2" : "#aaa"),
       hovered ? 0.3 : 0.1
     );
   });
