@@ -57,8 +57,12 @@ function Item({
       ref.current.scale.y,
       clicked === index
         ? device == "desktop"
-          ? 5
-          : screenWidth / 3
+          ? aspectRatio[clicked] == "landscape"
+            ? 5
+            : 6
+          : aspectRatio[clicked] == "landscape"
+          ? screenWidth / 3
+          : screenWidth / 1.9
         : device == "desktop"
         ? 4 + y
         : 4,
@@ -69,8 +73,12 @@ function Item({
       ref.current.scale.x,
       clicked === index
         ? device == "desktop"
-          ? 10
-          : screenWidth / 1.5
+          ? aspectRatio[clicked] == "landscape"
+            ? 10
+            : 4
+          : aspectRatio[clicked] == "landscape"
+          ? screenWidth / 1.5
+          : screenWidth / 4
         : scale[0],
       6,
       delta
@@ -82,7 +90,9 @@ function Item({
           ? device == "desktop"
             ? position[0] - 5
             : position[0] - 2.5
-          : position[0] - 2,
+          : device == "desktop"
+          ? position[0] - 2
+          : position[0] - 1,
         6,
         delta
       );
@@ -93,7 +103,9 @@ function Item({
           ? device == "desktop"
             ? position[0] + 5
             : position[0] + 2.5
-          : position[0] + 2,
+          : device == "desktop"
+          ? position[0] + 2
+          : position[0] + 1,
         6,
         delta
       );
@@ -146,6 +158,8 @@ function Items({ w = 0.7, gap = 0.15, state1 }) {
       horizontal
       damping={0.1}
       pages={(width - xW + urls.length * xW) / width}
+      //hide the scrollbar but allow scrolling
+      className="[&::-webkit-scrollbar]:hidden overflow-clip"
     >
       <Minimap state={state1} />
       <Scroll>
@@ -160,6 +174,7 @@ function Items({ w = 0.7, gap = 0.15, state1 }) {
 export default function ThreeJsCarousel({ urls }) {
   return (
     <Canvas
+      className=" w-full [&::-webkit-scrollbar]:hidden overflow-clip"
       gl={{ antialias: false }}
       dpr={[1, 1.5]}
       onPointerMissed={() => (urls.clicked = null)}

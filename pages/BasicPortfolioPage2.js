@@ -61,8 +61,13 @@ const amaWeb = [
     aspectRatio: "landscape",
   },
   {
-    url: "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
+    url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
     aspectRatio: "landscape",
+  },
+
+  {
+    url: "../1.jpeg",
+    aspectRatio: "portrait",
   },
   {
     url: "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
@@ -338,7 +343,7 @@ export default function BasicPortfolioPage() {
           <h4 className="mb-2  text-[#a631f0] text-3xl md:text-5xl font-bold">
             React & React Native
           </h4>
-          <div className="flex w-full  h-[500px] flex-col justify-center items-center">
+          <div className="flex w-full overflow-clip [&::-webkit-scrollbar]:hidden h-[500px] flex-col justify-center items-center">
             <ThreeJsCarousel urls={websiteProxy} />
           </div>
 
