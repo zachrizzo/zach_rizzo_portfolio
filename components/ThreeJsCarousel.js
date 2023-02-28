@@ -2,7 +2,14 @@ import React, { useEffect } from "react";
 import * as THREE from "three";
 import { useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Image, ScrollControls, Scroll, useScroll } from "@react-three/drei";
+import {
+  Image,
+  ScrollControls,
+  Scroll,
+  useScroll,
+  MeshReflectorMaterial,
+  SpotLight,
+} from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { Minimap } from "./MiniMap";
 // import { damp } from "./util.js";
@@ -123,7 +130,7 @@ function Item({
       delta
     );
     ref.current.material.color.lerp(
-      c.set(hovered || clicked === index ? "#E2E2E2" : "#aaa"),
+      c.set(hovered || clicked === index ? "white" : "#aaa"),
       hovered ? 0.3 : 0.1
     );
   });
@@ -158,8 +165,6 @@ function Items({ w = 0.7, gap = 0.15, state1 }) {
       horizontal
       damping={0.1}
       pages={(width - xW + urls.length * xW) / width}
-      //hide the scrollbar but allow scrolling
-      className="[&::-webkit-scrollbar]:hidden overflow-clip"
     >
       <Minimap state={state1} />
       <Scroll>
@@ -179,7 +184,25 @@ export default function ThreeJsCarousel({ urls }) {
       dpr={[1, 1.5]}
       onPointerMissed={() => (urls.clicked = null)}
     >
+      <ambientLight position={[0, 6, 0]} intensity={0.07} />
+
       <Items state1={urls} />
+
+      <mesh position={[0, -2.6, 0]} rotation={[-Math.PI / 1.9, 0, 0]}>
+        <planeGeometry args={[50, 50]} />
+        <MeshReflectorMaterial
+          blur={[300, 100]}
+          resolution={2048}
+          mixBlur={1}
+          mixStrength={0.3}
+          roughness={1}
+          depthScale={1.2}
+          minDepthThreshold={0.4}
+          maxDepthThreshold={1.4}
+          color="#FFFFFF"
+          metalness={0.5}
+        />
+      </mesh>
     </Canvas>
   );
 }

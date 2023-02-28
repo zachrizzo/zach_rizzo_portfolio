@@ -55,54 +55,35 @@ export async function getStaticProps() {
   };
 }
 
-const amaWeb = [
+const amaWebImages = [
   {
     url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
     aspectRatio: "landscape",
   },
   {
-    url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
+    url: "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
     aspectRatio: "landscape",
   },
 
   {
-    url: "../1.jpeg",
-    aspectRatio: "portrait",
-  },
-  {
     url: "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
     aspectRatio: "landscape",
   },
   {
-    url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
+    url: "../AMA website/Screenshot 2023-02-28 at 11.37.59 AM.png",
     aspectRatio: "landscape",
   },
+
   {
-    url: "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
-    aspectRatio: "landscape",
-  },
-  {
-    url: "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
-    aspectRatio: "landscape",
-  },
-  {
-    url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
-    aspectRatio: "landscape",
-  },
-  {
-    url: "../AMA website/Screenshot 2023-02-27 at 11.21.56 AM.png",
-    aspectRatio: "landscape",
-  },
-  {
-    url: "../AMA website/Screenshot 2023-02-27 at 11.33.20 AM.png",
+    url: "../AMA website/Screenshot 2023-02-28 at 11.39.02 AM.png",
     aspectRatio: "landscape",
   },
 ];
 
 const websiteProxy = proxy({
   clicked: null,
-  urls: amaWeb.map((image) => image.url),
-  aspectRatio: amaWeb.map((image) => image.aspectRatio),
+  urls: amaWebImages.map((image) => image.url),
+  aspectRatio: amaWebImages.map((image) => image.aspectRatio),
 });
 
 export default function BasicPortfolioPage() {
@@ -295,6 +276,7 @@ export default function BasicPortfolioPage() {
 
   return (
     <Suspense fallback={loadingFunction()}>
+      {/*  the old gray color is rgb(36,36,36) */}
       <div className="  overflow-x-hidden  bg-[rgb(36,36,36)]  w-full  h-screen z-0 ">
         <Canvas
           className=" justify-center h-full items-center flex"
@@ -343,9 +325,6 @@ export default function BasicPortfolioPage() {
           <h4 className="mb-2  text-[#a631f0] text-3xl md:text-5xl font-bold">
             React & React Native
           </h4>
-          <div className="flex w-full overflow-clip [&::-webkit-scrollbar]:hidden h-[500px] flex-col justify-center items-center">
-            <ThreeJsCarousel urls={websiteProxy} />
-          </div>
 
           <BasicProjectComponent
             className
@@ -394,10 +373,8 @@ export default function BasicPortfolioPage() {
             lat={lat}
             lng={long}
           />
-          {/* <BasicProjectComponent2
-            videosVertical={[]}
-            videosHorizontal={[]}
-            images={amaWebsiteUrl}
+          <BasicProjectComponent2
+            threeJsImageProxy={websiteProxy}
             title={"AMA Website"}
             description={
               "In collaboration with the AMA app, I developed a robust React-based website to handle the backend operations that the app could not. This website empowers employees and patients alike with a host of features, including post-visit text messaging, job application submission, new patient packet completion, department tracking and management, IT support ticket submission and resolution, and inventory management. I utilized the latest technologies such as React, Next.JS, TailWind, and Firebase to deliver a seamless and efficient user experience."
@@ -409,7 +386,7 @@ export default function BasicPortfolioPage() {
             NotifyDbOnClick={notifyDbOnClick}
             lat={lat}
             lng={long}
-          /> */}
+          />
 
           {/* <div
           
