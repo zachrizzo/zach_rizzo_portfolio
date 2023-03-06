@@ -67,12 +67,12 @@ export default function IntroNameComponent({
           }}
         />
         <MainButton
-          buttonText={"Robotics"}
+          buttonText={"About Me"}
           onClick={() => {
-            router.push("/BasicPortfolioPage2#robots");
+            router.push("/BasicPortfolioPage2#AboutMe");
             if (NotifyDbOnClick) {
               sendToDb({
-                project_button: "Robotics",
+                project_button: "About me",
                 lat: lat,
                 lng: lng,
               });
