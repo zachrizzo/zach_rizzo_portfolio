@@ -66,7 +66,7 @@ function Item({
         ? device == "desktop"
           ? aspectRatio[clicked] == "landscape"
             ? 5
-            : 6
+            : 7.5
           : aspectRatio[clicked] == "landscape"
           ? screenWidth / 3
           : screenWidth / 1.9
@@ -82,7 +82,7 @@ function Item({
         ? device == "desktop"
           ? aspectRatio[clicked] == "landscape"
             ? 10
-            : 4
+            : 3.5
           : aspectRatio[clicked] == "landscape"
           ? screenWidth / 1.5
           : screenWidth / 4
@@ -188,7 +188,7 @@ export default function ThreeJsCarousel({ urls }) {
 
       <Items state1={urls} />
 
-      <mesh position={[0, -2.6, 0]} rotation={[-Math.PI / 1.9, 0, 0]}>
+      {/* <mesh position={[0, -2.6, 0]} rotation={[-Math.PI / 1.9, 0, 0]}>
         <planeGeometry args={[50, 50]} />
         <MeshReflectorMaterial
           blur={[300, 100]}
@@ -202,7 +202,7 @@ export default function ThreeJsCarousel({ urls }) {
           color="#FFFFFF"
           metalness={0.5}
         />
-      </mesh>
+      </mesh> */}
     </Canvas>
   );
 }

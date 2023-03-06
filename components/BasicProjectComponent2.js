@@ -50,7 +50,7 @@ export default function BasicProjectComponent2({
         </div>
         {/* descrption */}
         <div className="mb-[30px] flex justify-center items-center  h-[40%]  w-[100%]">
-          <p className=" mx-5 text-sm md:text-lg text-[#e9e9e9]  md:mt-[50px] text-center ">
+          <p className=" mx-5 md:mx-[300px] text-sm md:text-lg text-[#e9e9e9]  md:mt-[50px] text-center ">
             {description}
           </p>
         </div>

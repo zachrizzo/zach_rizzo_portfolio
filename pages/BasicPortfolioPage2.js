@@ -80,10 +80,35 @@ const amaWebImages = [
   },
 ];
 
+const flowTeamImages = [
+  {
+    url: "/FlowTeam/Screens/messaging.png",
+    aspectRatio: "portrait",
+  },
+  {
+    url: "/FlowTeam/Screens/android feater graphic (1).png",
+    aspectRatio: "landscape",
+  },
+  {
+    url: "/FlowTeam/Screens/ToDoScreen.png",
+    aspectRatio: "portrait",
+  },
+  {
+    url: "/FlowTeam/Screens/IMG_0569.PNG",
+    aspectRatio: "portrait",
+  },
+];
+
 const websiteProxy = proxy({
   clicked: null,
   urls: amaWebImages.map((image) => image.url),
   aspectRatio: amaWebImages.map((image) => image.aspectRatio),
+});
+
+const flowTeamProxy = proxy({
+  clicked: null,
+  urls: flowTeamImages.map((image) => image.url),
+  aspectRatio: flowTeamImages.map((image) => image.aspectRatio),
 });
 
 export default function BasicPortfolioPage() {
@@ -357,32 +382,15 @@ export default function BasicPortfolioPage() {
             // }
           />
 
-          <BasicProjectComponent
-            videosVertical={[]}
-            videosHorizontal={[]}
-            images={amaWebsiteUrl}
-            title={"AMA Website"}
-            description={
-              "In collaboration with the AMA app, I developed a robust React-based website to handle the backend operations that the app could not. This website empowers employees and patients alike with a host of features, including post-visit text messaging, job application submission, new patient packet completion, department tracking and management, IT support ticket submission and resolution, and inventory management. I utilized the latest technologies such as React, Next.JS, TailWind, and Firebase to deliver a seamless and efficient user experience."
-            }
-            listOfVideoIndexes={[7]}
-            buttonText={"View Project"}
-            projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
-            imageButtons={true}
-            NotifyDbOnClick={notifyDbOnClick}
-            lat={lat}
-            lng={long}
-          />
           <BasicProjectComponent2
             threeJsImageProxy={websiteProxy}
             title={"AMA Website"}
             description={
               "In collaboration with the AMA app, I developed a robust React-based website to handle the backend operations that the app could not. This website empowers employees and patients alike with a host of features, including post-visit text messaging, job application submission, new patient packet completion, department tracking and management, IT support ticket submission and resolution, and inventory management. I utilized the latest technologies such as React, Next.JS, TailWind, and Firebase to deliver a seamless and efficient user experience."
             }
-            listOfVideoIndexes={[7]}
             buttonText={"View Project"}
             projectLink={"https://github.com/zachrizzo/AMA_Employee_Website"}
-            imageButtons={true}
+            imageButtons={false}
             NotifyDbOnClick={notifyDbOnClick}
             lat={lat}
             lng={long}
@@ -403,7 +411,22 @@ export default function BasicPortfolioPage() {
           </div>
         </div> */}
           {/* <div className=" h-[50px] mt-[50px] w-full"></div> */}
-          <BasicProjectComponent
+          <BasicProjectComponent2
+            title={"Flow Team"}
+            threeJsImageProxy={flowTeamProxy}
+            description={
+              "Introducing Flow Team - the ultimate mobile solution for effortless team management. Designed with the modern workplace in mind, Flow Team offers a comprehensive suite of features to streamline your team's operations. From time tracking using Geo location to creating and sharing to-do lists between multiple teams, to messaging capabilities reminiscent of Slack, this app has everything you need to take your team's productivity to the next level. Built with cutting-edge technologies such as React Native and Firebase, Flow Team guarantees a seamless user experience that will keep your team organized, connected, and motivated."
+            }
+            buttonText={"View Project"}
+            projectLink={
+              "https://github.com/zachrizzo/team_Flow_productiviity_app_v3"
+            }
+            NotifyDbOnClick={notifyDbOnClick}
+            lat={lat}
+            lng={long}
+          />
+          {/* ////////////////// */}
+          {/* <BasicProjectComponent
             videosVertical={[]}
             videosHorizontal={[]}
             images={flowTeamUrl}
@@ -420,7 +443,7 @@ export default function BasicPortfolioPage() {
             NotifyDbOnClick={notifyDbOnClick}
             lat={lat}
             lng={long}
-          />
+          /> */}
 
           {/* <div className=" h-screen flex flex-col justify-center items-center w-full snap-center">
             <h3 className=" top-1 uppercase tracking-[20px] text-gray-500 text-2xl">
@@ -459,7 +482,7 @@ export default function BasicPortfolioPage() {
           </div> */}
         </section>
 
-        <section id={"robots"} ref={RoboticsRef} className=" text-center">
+        {/* <section id={"robots"} ref={RoboticsRef} className=" text-center">
           <h4 className="mb-2 text-[#a631f0] text-3xl md:text-5xl font-bold">
             Robotics & Research
           </h4>
@@ -495,7 +518,7 @@ export default function BasicPortfolioPage() {
             lat={lat}
             lng={long}
           />
-        </section>
+        </section> */}
 
         {/*  */}
         {/*  */}
