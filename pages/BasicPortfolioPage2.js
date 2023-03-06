@@ -55,6 +55,14 @@ export async function getStaticProps() {
   };
 }
 
+const amaAppImages = [
+  {
+    url: "../AMA app/Screenshot 2023-02-27 at 11.19.52 AM.png",
+    aspectRatio: "landscape",
+    video: true,
+  },
+];
+
 const amaWebImages = [
   {
     url: "../AMA website/Screenshot 2023-02-27 at 11.20.59 AM.png",
@@ -103,6 +111,7 @@ const websiteProxy = proxy({
   clicked: null,
   urls: amaWebImages.map((image) => image.url),
   aspectRatio: amaWebImages.map((image) => image.aspectRatio),
+  video: amaWebImages.map((image) => image.video),
 });
 
 const flowTeamProxy = proxy({

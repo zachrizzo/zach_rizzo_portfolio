@@ -23,6 +23,7 @@ function Item({
   scale,
   screenWidth,
   device,
+  video,
   c = new THREE.Color(),
   ...props
 }) {
@@ -134,23 +135,32 @@ function Item({
       hovered ? 0.3 : 0.1
     );
   });
-  return (
-    <Image
-      ref={ref}
-      // {...props}
-      url={props.url}
-      position={position}
-      scale={scale}
-      onClick={click}
-      onPointerOver={over}
-      onPointerOut={out}
-    />
-  );
+  if (video) {
+    return (
+      <mesh ref={ref} position={position} scale={scale} onClick={click}>
+        <planeBufferGeometry attach="geometry" args={[1, 1, 32, 32]} />
+        <meshBasicMaterial attach="material" map={video} />
+      </mesh>
+    );
+  } else {
+    return (
+      <Image
+        ref={ref}
+        // {...props}
+        url={props.url}
+        position={position}
+        scale={scale}
+        onClick={click}
+        onPointerOver={over}
+        onPointerOut={out}
+      />
+    );
+  }
 }
 
 function Items({ w = 0.7, gap = 0.15, state1 }) {
   // const state1 = state;
-  const { clicked, urls, aspectRatio } = useSnapshot(state1);
+  const { clicked, urls, aspectRatio, video } = useSnapshot(state1);
   var device = "mobile";
   // console.log(aspectRatio);
   // const urls = state1;
@@ -169,7 +179,7 @@ function Items({ w = 0.7, gap = 0.15, state1 }) {
       <Minimap state={state1} />
       <Scroll>
         {
-          urls.map((url, i) => <Item   key={i} index={i} device={device} screenWidth={width} aspectRatio={aspectRatio}  position={[i * xW, 0, 0]} scale={[w, 4, 1]} url={url} state={state1} />) /* prettier-ignore */
+          urls.map((url, i) => <Item   key={i} index={i} device={device} screenWidth={width} aspectRatio={aspectRatio} video={video}  position={[i * xW, 0, 0]} scale={[w, 4, 1]} url={url} state={state1} />) /* prettier-ignore */
         }
       </Scroll>
     </ScrollControls>
