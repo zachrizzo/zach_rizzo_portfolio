@@ -57,10 +57,25 @@ export async function getStaticProps() {
 
 const amaAppImages = [
   {
-    url: "../AMA app/Screenshot 2023-02-27 at 11.19.52 AM.png",
-    aspectRatio: "landscape",
+    url: "/amaApp/IMG_0571.PNG",
+    aspectRatio: "portrait",
+    video: false,
+  },
+  {
+    url: "/amaApp/IMG_0572.PNG",
+    aspectRatio: "portrait",
+    video: false,
+  },
+  {
+    url: "/amaApp/IMG_0573.PNG",
+    aspectRatio: "portrait",
     video: true,
   },
+  // {
+  //   url: "/amaApp/Untitled.mov",
+  //   aspectRatio: "portrait",
+  //   video: true,
+  // },
 ];
 
 const amaWebImages = [
@@ -111,13 +126,20 @@ const websiteProxy = proxy({
   clicked: null,
   urls: amaWebImages.map((image) => image.url),
   aspectRatio: amaWebImages.map((image) => image.aspectRatio),
-  video: amaWebImages.map((image) => image.video),
 });
 
 const flowTeamProxy = proxy({
   clicked: null,
   urls: flowTeamImages.map((image) => image.url),
   aspectRatio: flowTeamImages.map((image) => image.aspectRatio),
+  // video: flowTeamImages.map((image) => image.video),
+});
+
+const amaAppProxy = proxy({
+  clicked: null,
+  urls: amaAppImages.map((image) => image.url),
+  aspectRatio: amaAppImages.map((image) => image.aspectRatio),
+  video: amaAppImages.map((image) => image.video),
 });
 
 export default function BasicPortfolioPage() {
@@ -172,7 +194,7 @@ export default function BasicPortfolioPage() {
 
   useEffect(() => {
     if (amaWebsiteUrl.length != 0) {
-      console.log("websiteProxy", websiteProxy);
+      // console.log("websiteProxy", websiteProxy);
       amaWebsiteUrl.map((url) => {
         // console.log("url", url.url);
       });
@@ -350,7 +372,7 @@ export default function BasicPortfolioPage() {
 
         {/* if not on desk top dont show particle text */}
         <div className=" hidden md:block">{/* <ParticleText /> */}</div>
-        <div className="my-[50px] h-[85%] md:h-[70%]">
+        <div id={"AboutMe"} className="my-[50px] h-[85%] md:h-[70%]">
           <AboutMe />
         </div>
 
@@ -360,35 +382,18 @@ export default function BasicPortfolioPage() {
             React & React Native
           </h4>
 
-          <BasicProjectComponent
-            className
-            videosVertical={[
-              "/portfolioImages/amaApp/RPReplay_Final1669607984.MP4",
-            ]}
-            videosHorizontal={[]}
-            projectLink={"https://github.com/zachrizzo/AMA_APP"}
-            images={amaAppUrl}
+          <BasicProjectComponent2
+            threeJsImageProxy={amaAppProxy}
             title={"AMA App"}
             description={
               "As a software engineer at American Medical Associates, I developed the AMA app with a mission to revolutionize the way the AMA staff operates. The app streamlines various backend processes such as inventory management, barcode scanning, and financial tracking for the clinic managers. Additionally, it offers a comprehensive platform for the users to communicate, set reminders, and manage their schedules seamlessly. I leveraged my expertise in React Native and Firebase to bring this innovative solution to life."
             }
-            listOfVideoIndexes={[9]}
             buttonText={"View Project"}
-            imageButtons={true}
+            projectLink={"https://github.com/zachrizzo/AMA_APP"}
+            imageButtons={false}
             NotifyDbOnClick={notifyDbOnClick}
             lat={lat}
             lng={long}
-            // displayImage={
-            //   amaAppUrl
-            //     ? amaAppUrl[0].map((url) => {
-            //         return (
-            //           <div className="w-full flex flex-col justify-center items-center h-[45%]">
-            //             <img className="rounded-3xl" alt="" src={url} />
-            //           </div>
-            //         );
-            //       })
-            //     : null
-            // }
           />
 
           <BasicProjectComponent2

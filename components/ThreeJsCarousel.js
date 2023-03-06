@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as THREE from "three";
 import { useRef, useState } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import {
   Image,
   ScrollControls,
@@ -15,6 +15,8 @@ import { Minimap } from "./MiniMap";
 // import { damp } from "./util.js";
 import { proxy } from "valtio";
 
+import { VideoTexture } from "three";
+
 function Item({
   aspectRatio,
   state,
@@ -27,13 +29,14 @@ function Item({
   c = new THREE.Color(),
   ...props
 }) {
-  console.log(aspectRatio);
+  // console.log(aspectRatio);
   const damp = THREE.MathUtils.damp;
   const ref = useRef();
   const scroll = useScroll();
   const { clicked, urls } = useSnapshot(state);
   const [hovered, hover] = useState(false);
   const click = () => (state.clicked = clicked === index ? index : index);
+
   useEffect(() => {
     if (clicked != null) {
       // ref.current.position.x = damp(
@@ -135,12 +138,39 @@ function Item({
       hovered ? 0.3 : 0.1
     );
   });
-  if (video) {
+
+  const [videoTextures] = useState(() =>
+    Object.assign(document.createElement("video"), {
+      src: props.url,
+      crossOrigin: "Anonymous",
+      loop: true,
+    })
+  );
+
+  if (video == false && props.url) {
     return (
-      <mesh ref={ref} position={position} scale={scale} onClick={click}>
-        <planeBufferGeometry attach="geometry" args={[1, 1, 32, 32]} />
-        <meshBasicMaterial attach="material" map={video} />
-      </mesh>
+      <meshPhysicalMaterial
+        clearcoat={1}
+        clearcoatRoughness={0}
+        toneMapped={false}
+        ref={ref}
+        // onPointerOver={over}
+        // onPointerOut={out}
+        // position={position}
+        // scale={scale}
+        // onClick={click}
+      >
+        <videoTexture
+          attach="map"
+          args={[videoTextures]}
+          flipY={false}
+          repeat={[5, 9]}
+          offset={[-0.1, 0]}
+          wrapT={THREE.RepeatWrapping}
+          wrapS={THREE.RepeatWrapping}
+          encoding={THREE.sRGBEncoding}
+        />
+      </meshPhysicalMaterial>
     );
   } else {
     return (
