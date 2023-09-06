@@ -322,7 +322,7 @@ export default function BasicPortfolioPage() {
     //create a spinner using tailwind
     if (loading) {
       return (
-        <div className="flex items-center flex-col justify-center">
+        <div className="flex flex-col justify-center items-center h-screen w-screen">
           <div className="h-20 w-20 animate-spin rounded-full border-b-4 border-[#0E19EE]"></div>
           <h1 className=" text-xl m-5">Loading...</h1>
         </div>
