@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, Suspense } from "react";
 import BasicProjectComponent from "../components/BasicProjectComponent";
-import MainButton from "../components/MainButton";
-import ParticleText from "../components/Particletext";
+// import MainButton from "../components/MainButton";
+// import ParticleText from "../components/Particletext";
 // import IphoneScroll from "../components/threejsPhones/Three_IphoneScroll";
 import { motion } from "framer-motion";
 import IntroNameComponent from "../components/IntroNameComonent";
@@ -9,12 +9,12 @@ import AboutMe from "../components/AboutMe";
 import { getImageAndVideos, sendToDb } from "../firebase";
 import BasicProjectComponent2 from "../components/BasicProjectComponent2";
 import { Particles } from "../components/ParticlesNoise";
-import { useControls } from "leva";
+// import { useControls } from "leva";
 import { Canvas } from "@react-three/fiber";
 import { CameraShake, Html, OrbitControls } from "@react-three/drei";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { useRouter } from "next/router";
-import ThreeJsCarousel from "../components/ThreeJsCarousel";
+// import ThreeJsCarousel from "../components/ThreeJsCarousel";
 import { proxy, useSnapshot } from "valtio";
 
 export async function getStaticProps() {
@@ -411,7 +411,7 @@ export default function BasicPortfolioPage() {
           />
 
           {/* <div
-          
+
           className="  flex items-center justify-center flex-col snap-y snap-mandatory snap-center snap-always  w-full h-screen"
         >
           <h3 className=" top-24 uppercase tracking-[20px] text-gray-500 text-2xl">

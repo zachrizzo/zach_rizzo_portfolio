@@ -30,7 +30,7 @@ import { useFrame } from "@react-three/fiber";
 import { RomanGear } from "../components/romanGear";
 import { Roman_centurion_armor } from "../components/roman_centurion_armor";
 
-export default function FloatingIslandSeen() {
+const FloatingIslandSeen = () => {
   const cameraRef = useRef();
   const [godRaysExposure, setGodRaysExposure] = useState(0.3);
   const [godRaysDecay, setGodRaysDecay] = useState(0.97);
@@ -273,4 +273,6 @@ export default function FloatingIslandSeen() {
       </ScrollControls>
     </>
   );
-}
+};
+
+export default FloatingIslandSeen;

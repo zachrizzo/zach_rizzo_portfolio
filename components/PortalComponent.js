@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useEffect } from "react";
 import {
   Scene,
   WebGLRenderTarget,
@@ -12,41 +12,55 @@ import {
 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { FillQuad } from "../FillQuad";
-import React from "react";
-
-const scene = new Scene();
-var target;
-//add event listener to check if document is defined
-
-if (typeof window !== "undefined") {
-  document.addEventListener("DOMContentLoaded", function () {
-    scene.background = new TextureLoader().load("/galaxy.jpeg", (texture) => {
-      texture.encoding = LinearEncoding;
-      texture.mapping = EquirectangularReflectionMapping;
-    });
-    target = new WebGLRenderTarget(window.innerWidth, window.innerHeight, {
-      stencilBuffer: false,
-    });
-    window.addEventListener("resize", () => {
-      target.setSize(window.innerWidth, window.innerHeight);
-    });
-  });
-}
 
 export default function Portal() {
-  // thanks to https://sketchfab.com/3d-models/portal-frame-da34b37a224e4e49b307c0b17a50af2c
+  const [target, setTarget] = useState(null);
+  const [scene, setScene] = useState(new Scene()); // Initialize scene state
   const model = useLoader(GLTFLoader, "/models/floating_island/portal.glb");
   const mask = useLoader(GLTFLoader, "/models/floating_island/portal_mask.glb");
 
+  useEffect(() => {
+    const newScene = new Scene();
+    newScene.background = new TextureLoader().load(
+      "/galaxy.jpeg",
+      (texture) => {
+        texture.encoding = LinearEncoding;
+        texture.mapping = EquirectangularReflectionMapping;
+      }
+    );
+
+    setScene(newScene); // Update scene state
+
+    const newTarget = new WebGLRenderTarget(
+      window.innerWidth,
+      window.innerHeight,
+      {
+        stencilBuffer: false,
+      }
+    );
+
+    setTarget(newTarget);
+
+    const handleResize = () => {
+      newTarget.setSize(window.innerWidth, window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useFrame((state) => {
-    state?.gl?.setRenderTarget(target);
-    state?.gl?.render(scene, state.camera);
-    state?.gl?.setRenderTarget(null);
+    if (!state?.gl || !scene) return; // Make sure scene is available
+    state.gl.setRenderTarget(target);
+    state.gl.render(scene, state.camera);
+    state.gl.setRenderTarget(null);
   });
-  //check if document is defined
 
   useEffect(() => {
-    if (!model) return;
+    if (!model || !mask) return;
 
     let mesh = model.scene.children[0];
     mesh.material.envMapIntensity = 3.5;
@@ -62,10 +76,9 @@ export default function Portal() {
 
   return (
     <>
-      <primitive object={model.scene} />
-      <primitive object={mask.scene} />
-
-      <FillQuad map={target?.texture} maskId={1} />
+      {model && <primitive object={model.scene} />}
+      {mask && <primitive object={mask.scene} />}
+      {target && <FillQuad map={target.texture} maskId={1} />}
     </>
   );
 }

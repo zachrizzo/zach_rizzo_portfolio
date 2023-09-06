@@ -8,7 +8,9 @@ import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { Color, CylinderGeometry, Mesh, MeshBasicMaterial } from "three";
 import { Suspense } from "react";
 
-import FloatingIslandSeen from "../components/FloatingIslandSeen";
+const FloatingIslandSeen = React.lazy(() =>
+  import("../components/FloatingIslandSeen")
+);
 
 export function getServerSideProps() {
   return {
