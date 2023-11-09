@@ -123,20 +123,20 @@ const flowTeamImages = [
 ];
 
 const websiteProxy = proxy({
-  clicked: null,
+  clicked: 0,
   urls: amaWebImages.map((image) => image.url),
   aspectRatio: amaWebImages.map((image) => image.aspectRatio),
 });
 
 const flowTeamProxy = proxy({
-  clicked: null,
+  clicked: 0,
   urls: flowTeamImages.map((image) => image.url),
   aspectRatio: flowTeamImages.map((image) => image.aspectRatio),
   // video: flowTeamImages.map((image) => image.video),
 });
 
 const amaAppProxy = proxy({
-  clicked: null,
+  clicked: 0,
   urls: amaAppImages.map((image) => image.url),
   aspectRatio: amaAppImages.map((image) => image.aspectRatio),
   video: amaAppImages.map((image) => image.video),
